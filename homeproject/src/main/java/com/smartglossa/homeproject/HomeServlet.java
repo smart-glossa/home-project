@@ -177,6 +177,24 @@ public class HomeServlet extends HttpServlet {
 			}
 		    response.getWriter().print(result);
 		}
+		else if(operation.equals("addExpense")){
+			int exid=Integer.parseInt(request.getParameter("exid"));
+			String name=request.getParameter("name");
+			String catename=request.getParameter("catename");
+			String amount=request.getParameter("amount");
+			String desc=request.getParameter("desc");
+			JSONObject result=new JSONObject();
+			try {
+				HomeClass home=new HomeClass();
+				home.addExpense(exid, name, catename, amount, desc);
+		        result.put("status", 1);		
+			} catch (Exception e) {
+              result.put("status", 0);
+              e.printStackTrace();
+			}
+			response.getWriter().println(result);
+		}
+		
 	}     
 
 

@@ -163,18 +163,22 @@ public final class HomeClass {
 				obj.put("memberid",rs.getString("memberid"));
 				obj.put("salary",rs.getString("salary"));
 				result.put(obj);
-				
 			}
-			
 		} finally {
 			closeConnection();
-
 		}
 		return result;
-		
+	}
+	public void addExpense(int exid,String name,String catename,String amount,String desc) throws SQLException {
+		try {
+			String query="insert into expense(exid,name,categoryname,amount,description)values("+exid+",'"+name+"','"+catename+"','"+amount+"','"+desc+"')";
+			stat.execute(query);
+		} finally {
+			closeConnection();
+           
+		}
 		
 	}
-
 	private void openConnection() throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		con = DriverManager.getConnection("jdbc:mysql://" + HomeConstant.MYSQL_SERVER + "/" + HomeConstant.DATABASE,
