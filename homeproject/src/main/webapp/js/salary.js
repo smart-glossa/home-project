@@ -21,12 +21,11 @@ mem += "    <tr>";
 mem += "    	<td><\/td>";
 mem += "    	<td><button id=\"addSub\">Submit<\/button><button id=\"update\">Update<\/button><\/td>";
 mem += "    <\/tr>";
-mem += "<\/table>";
+mem += "<\/table>";    
 mem += "<\/div>";
 mem += "";
 $(".member")[0].innerHTML=mem;
 }
-
 function salary(){
 var sal="";
 sal += "<div>";

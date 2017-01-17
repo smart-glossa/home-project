@@ -166,7 +166,6 @@ public class HomeServlet extends HttpServlet {
 			}
 			response.getWriter().print(result);
 		}
-		
 		else if(operation.equals("allSalary")){
 		    JSONArray result=new JSONArray();
 		    try {
@@ -174,13 +173,11 @@ public class HomeServlet extends HttpServlet {
 		    	result=home.allSalary();
 				
 			} catch (Exception e) {
-				
 				e.printStackTrace();
-
 			}
 		    response.getWriter().print(result);
 		}
-	}
+	}     
 
 
 		

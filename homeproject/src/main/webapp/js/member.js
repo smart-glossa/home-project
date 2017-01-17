@@ -7,7 +7,7 @@ $(document).ready(function(){
 		if(mid==""){
 			$("#mid").focus().css("outline-color","red");
 			return;
-		}
+		}      
 		if(mname==""){
 			$("#mname").focus().css("outline-color","red");
 			return;
@@ -15,19 +15,17 @@ $(document).ready(function(){
 		if(dob==""){
 			$("#dob").focus().css("outline-color","red");
 			return;
-				
 		}
 		if(mno==""){
 			$("#mno").focus().css("outline-color","red");
 			return;
 		}
-		var url="/home/home?operation=addMember&mid="+mid+"&mname="+mname+"&dob="+dob+"&mno="+mno;
-		
+		var url="/homeproject/Home?operation=addMember&mid="+mid+"&mname="+mname+"&dob="+dob+"&mno="+mno;
 		$.ajax({
 			url:url,
 			type:'POST'
 		}).done(function(result){
-			alert("Successfully Added");
+			alert("Sucess");
 		}).fail(function(result){
 			alert("Please Check Deatils");
 		})
@@ -53,7 +51,7 @@ $(document).ready(function(){
 			$("#mno").focus().css("outline-color","red");
 			return;
 		}
-		var url="/home/home?operation=updateMember&mid="+mid+"&mname="+mname+"&dob="+dob+"&mno="+mno;
+		var url="/homeproject/Home?operation=updateMember&mid="+mid+"&mname="+mname+"&dob="+dob+"&mno="+mno;
 		$.ajax({
 			url:url,
 			type:'POST'
@@ -68,7 +66,7 @@ $(document).ready(function(){
 	$(document).on("keyup","#mid",function(){
 		var mid=$("#mid").val();
 		if(mid !=""){
-			var url="/home/home?operation=getOne&id="+mid;
+			var url="/homeproject/Home?operation=getOne&id="+mid;
 			$.ajax({
 				url:url,
 				type:'POST'
@@ -82,7 +80,7 @@ $(document).ready(function(){
 	});
 	
 	$(document).on("click","#getAll",function(){
-		var url = "/home/home?operation=getAll";
+		var url = "/homeproject/Home?operation=getAll";
 		$.ajax({
 			url : url,
 			type : 'POST'
@@ -115,7 +113,7 @@ $(document).ready(function(){
 			$("#sal").focus().css("outline-color","red");
 			return;
 		}
-		var url="/home/home?operation=addSalary&id="+id+"&salary="+sal;
+		var url="/homeproject/Home?operation=addSalary&id="+id+"&salary="+sal;
 		
 		$.ajax({
 			url:url,
@@ -139,7 +137,7 @@ $(document).ready(function(){
 			$("#sal").focus().css("outline-color","red");
 			return;
 		}
-		var url="/home/home?operation=updateSalary&id="+id+"&salary="+sal;
+		var url="/homeproject/Home?operation=updateSalary&id="+id+"&salary="+sal;
 		
 		$.ajax({
 			url:url,
@@ -155,7 +153,7 @@ $(document).ready(function(){
 	$(document).on("keyup","#id",function(){
 		var id=$("#id").val();
 		if(id !=""){
-			var url="/home/home?operation=oneSalary&id="+id;
+			var url="/homeproject/Home?operation=oneSalary&id="+id;
 			$.ajax({
 				url:url,
 				type:'POST'
@@ -167,7 +165,7 @@ $(document).ready(function(){
 	});
 	
 	$(document).on("click","#allSalary",function(){
-		var url = "/home/home?operation=allSalary";
+		var url = "/homeproject/Home?operation=allSalary";
 		$.ajax({
 			url : url,
 			type : 'POST'
