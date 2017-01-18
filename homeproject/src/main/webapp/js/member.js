@@ -185,6 +185,44 @@ $(document).ready(function(){
 		});
 	})
 	
+	$(document).on("click","#sub",function(){
+		var exid=$("#exid").val();
+		var name=$("#name").val();
+		var catename=$("#catename").val();
+		var amount=$("#amount").val();
+		var desc=$("#desc").val();
+		if(exid==""){
+			$("#exid").focus().css("outline-color","red");
+			return;
+		}      
+		if(name==""){
+			$("#name").focus().css("outline-color","red");
+			return;
+		}
+		if(catename==""){
+			$("#catename").focus().css("outline-color","red");
+			return;
+		}
+		if(amount==""){
+			$("#amount").focus().css("outline-color","red");
+			return;
+		}
+	    if(desc==""){
+	       $("#desc").focus().css("outline-color","red");
+	       return;
+        }
+		var url="/homeproject/Home?operation=addExpense&exid="+exid+"&name="+name+"&categoryname="+catename+"&amount="+amount+"description="+desc;
+		$.ajax({
+			url:url,
+			type:'POST'
+		}).done(function(result){
+			alert("Sucess");
+		}).fail(function(result){
+			alert("Please Check Deatils");
+		})
+	});
+	
+	
 	
 	
 	

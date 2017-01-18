@@ -194,6 +194,66 @@ public class HomeServlet extends HttpServlet {
 			}
 			response.getWriter().println(result);
 		}
+		else if(operation.equals("updateExpense")){
+			int exid=Integer.parseInt(request.getParameter("exid"));
+			String name=request.getParameter("name");
+			String catename=request.getParameter("catename");
+			String amount=request.getParameter("amount");
+			String desc=request.getParameter("desc");
+			JSONObject result=new JSONObject();
+			try {
+				HomeClass home=new HomeClass();
+				home.updateExpense(exid, name, catename, amount, desc);
+				result.put("status",1);
+			} catch (Exception e) {
+				result.put("status",0);
+				e.printStackTrace();
+
+			}
+			response.getWriter().println(result);
+		}
+		else if(operation.equals("deleteExpense")){
+			int exid=Integer.parseInt(request.getParameter("exid"));
+			JSONObject result=new JSONObject();
+			try {
+				HomeClass home=new HomeClass();
+				home.deleteExpense(exid);
+				result.put("status",1);
+				
+			} catch (Exception e) {
+				result.put("status",0);
+ 
+			}
+			response.getWriter().print(result);
+		}
+		else if(operation.equals("expenseOne")){
+			int exid=Integer.parseInt(request.getParameter("exid"));
+			JSONObject result=new JSONObject();
+			try {
+				HomeClass home=new HomeClass();
+				result=home.expenseOne(exid);
+				
+				
+			} catch (Exception e) {
+				result.put("status",0);
+
+			}
+			response.getWriter().print(result);
+		}
+		else if(operation.equals("expenseAll")){
+			JSONArray result=new JSONArray();
+			try {
+				HomeClass home=new HomeClass();
+				result=home.expenseAll();
+				
+				
+			} catch (Exception e) {
+			
+
+			}
+			response.getWriter().print(result);
+			
+		}
 		
 	}     
 

@@ -45,3 +45,33 @@ sal += "<\/div>";
 sal += "";
 $(".sal")[0].innerHTML=sal;
 }
+
+function expense(){
+	var exp="";
+	exp += "<div>";
+	exp += "<table>";
+	exp += "	<tr>";
+	exp += "		<td>Expense Id<\/td><td><input type=\"text\" id=\"exid\"><\/input><\/td>";
+	exp += "	<\/tr>";
+	exp += "	<tr>";
+	exp += "		<td>Name<\/td><td><input type=\"text\" id=\"name\"><\/input><\/td>";
+	exp += "	<\/tr>";
+	exp += "	<tr>";
+	exp += "		<td>Category Name<\/td><td><input type=\"text\" id=\"catename\"><\/input><\/td>";
+	exp += "    <\/tr>";
+	exp += "    <tr>";
+	exp += "    	<td>Amount<\/td><td><input type=\"number\" id=\"amount\"><\/input><\/td>";
+	exp += "    <\/tr>";
+	exp += "    <tr>";
+	exp += "    	<td>Description<\/td><td><input type=\"number\" id=\"desc\"><\/input><\/td>";
+	exp += "    <\/tr>";
+	exp += "    <tr>";
+	exp += "    	<td><\/td>";
+	exp += "    	<td><button id=\"sub\">Submit<\/button><button id=\"updat\">Update<\/button><\/td>";
+	exp += "    <\/tr>";
+	exp += "<\/table>";    
+	exp += "<\/div>";
+	exp += "";
+	$(".expense")[0].innerHTML=exp;
+	}
+
