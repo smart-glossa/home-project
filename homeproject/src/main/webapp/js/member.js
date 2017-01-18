@@ -257,7 +257,7 @@ $(document).ready(function(){
 		}).fail(function(result){
 			alert("Error accurs");
 		})
-	
+	    
 	});
 	
 	$(document).on("keyup","#exid",function(){
