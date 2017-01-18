@@ -235,6 +235,7 @@ public final class HomeClass {
 			rs=stat.executeQuery(query);
 			while (rs.next()) {
 				JSONObject obj=new JSONObject();
+				obj.put("exid",rs.getString("exid"));
 				obj.put("name",rs.getString("name"));
 				obj.put("categoryname",rs.getString("categoryname"));
 				obj.put("amount",rs.getString("amount"));

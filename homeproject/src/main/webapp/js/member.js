@@ -211,16 +211,100 @@ $(document).ready(function(){
 	       $("#desc").focus().css("outline-color","red");
 	       return;
         }
-		var url="/homeproject/Home?operation=addExpense&exid="+exid+"&name="+name+"&categoryname="+catename+"&amount="+amount+"description="+desc;
+		var url="/homeproject/Home?operation=addExpense&exid="+exid+"&name="+name+"&catename="+catename+"&amount="+amount+"&desc="+desc;
 		$.ajax({
 			url:url,
 			type:'POST'
 		}).done(function(result){
-			alert("Sucess");
+			alert("Successfully Added");
 		}).fail(function(result){
 			alert("Please Check Deatils");
 		})
 	});
+	
+	$(document).on("click","#upda",function(){
+		var exid=$("#exid").val();
+		var name=$("#name").val();
+		var catename=$("#catename").val();
+		var amount=$("#amount").val();
+		var desc=$("#desc").val();
+		if(exid==""){
+			$("#exid").focus().css("outline-color","red");
+			return;
+		}
+		if(name==""){
+			$("#name").focus().css("outline-color","red");
+			return;
+		}
+		if(catename==""){
+			$("#catename").focus().css("outline-color","red");
+			return;
+		}
+		if(amount==""){
+			$("#amount").focus().css("outline-color","red");
+			return;
+		}
+		if(desc==""){
+			$("#desc").focus().css("outline-color","red");
+			return;
+		}
+		var url="/homeproject/Home?operation=updateExpense&exid="+exid+"&name="+name+"&categoryname="+catename+"&amount="+amount+"&desc="+desc;
+		$.ajax({
+			url:url,
+			type:'POST'
+		}).done(function(result){
+			alert("Update Successfully");
+		}).fail(function(result){
+			alert("Error accurs");
+		})
+	
+	});
+	
+	$(document).on("keyup","#exid",function(){
+		var exid=$("#exid").val();
+		if(exid !=""){
+			var url="/homeproject/Home?operation=expenseOne&exid="+exid;
+			$.ajax({
+				url:url,
+				type:'POST'
+			}).done(function(result){
+				result=JSON.parse(result);
+				$("#name").val(result.name);
+				$("#catename").val(result.categoryname);
+				$("#amount").val(result.amount);
+				$("#desc").val(result.description);
+			})
+		}
+	});
+	
+	$(document).on("click","#allExpense",function(){
+		var url = "/homeproject/Home?operation=expenseAll";
+		$.ajax({
+			url : url,
+			type : 'POST'
+		})
+		.done(function(result) {
+			var array = JSON.parse(result);
+			var table = "<table border=2px>";
+			table += "<tr><th>ExpenseId</th><th>Name</th><th>CategoryName</th><th>Amount</th><th>Description</th></tr>";
+			for (i = 0; i < array.length; i++) {
+			table += "<tr>";
+			table += "<td>"+ array[i].exid+ "</td>";
+			table += "<td>"+ array[i].name+ "</td>";
+			table += "<td>"+ array[i].categoryname+ "</td>";
+			table += "<td>"+ array[i].amount+ "</td>";
+			table += "<td>"+ array[i].description+ "</td>";
+			table += "</tr>";
+          }
+			table += "</table>";
+			$('.allExpense')[0].innerHTML = table;
+		});
+	})
+	
+	
+	
+	
+	
 	
 	 
 	

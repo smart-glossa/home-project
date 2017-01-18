@@ -63,11 +63,11 @@ function expense(){
 	exp += "    	<td>Amount<\/td><td><input type=\"number\" id=\"amount\"><\/input><\/td>";
 	exp += "    <\/tr>";
 	exp += "    <tr>";
-	exp += "    	<td>Description<\/td><td><input type=\"number\" id=\"desc\"><\/input><\/td>";
+	exp += "    	<td>Description<\/td><td><input type=\"text\" id=\"desc\"><\/input><\/td>";
 	exp += "    <\/tr>";
 	exp += "    <tr>";
 	exp += "    	<td><\/td>";
-	exp += "    	<td><button id=\"sub\">Submit<\/button><button id=\"updat\">Update<\/button><\/td>";
+	exp += "    	<td><button id=\"sub\">Submit<\/button><button id=\"upda\">Update<\/button><\/td>";
 	exp += "    <\/tr>";
 	exp += "<\/table>";    
 	exp += "<\/div>";
