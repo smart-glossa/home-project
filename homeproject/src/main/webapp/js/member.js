@@ -181,7 +181,7 @@ $(document).ready(function(){
 			table += "</tr>";
           }
 			table += "</table>";
-			$('.allSalary')[0].innerHTML = table;
+			$('.member')[0].innerHTML = table;
 		});
 	})
 	
@@ -297,7 +297,7 @@ $(document).ready(function(){
 			table += "</tr>";
           }
 			table += "</table>";
-			$('.allExpense')[0].innerHTML = table;
+			$('.member')[0].innerHTML = table;
 		});
 	})
 	

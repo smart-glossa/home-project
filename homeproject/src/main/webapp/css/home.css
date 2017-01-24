@@ -28,16 +28,19 @@
     font-size: 16px;
     border: none;
     cursor: pointer;
+    float: left;
 }
 .dropdown {
     position: relative;
     display: inline-block;
+   
 }
 .dropdown-content {
     display: none;
     position: relative;
     background-color: #f9f9f9;
     min-width: 160px;
+   
   }
 .dropdown-content p {
     color:#000000;
@@ -54,7 +57,7 @@
 
 .dropdown:hover .dropdown-content {
     display:block ;
-    margin-left: 70px;
+    margin-left: 120px;
 }
 
 .dropdown:hover .dropbtn {
