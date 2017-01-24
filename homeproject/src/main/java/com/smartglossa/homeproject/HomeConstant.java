@@ -7,3 +7,4 @@ public class HomeConstant {
 	final static String PASSWORD = System.getProperty("home.password");
 	final static String DATABASE = System.getProperty("home.database");
  }
+ 

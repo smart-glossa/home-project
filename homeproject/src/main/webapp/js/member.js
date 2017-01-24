@@ -98,7 +98,7 @@ $(document).ready(function(){
 			table += "</tr>";
           }
 			table += "</table>";
-			$('.getAll')[0].innerHTML = table;
+			$('.member')[0].innerHTML = table;
 		});
 	})
 	

@@ -43,7 +43,7 @@ sal += "    <\/tr>";
 sal += "<\/table>";
 sal += "<\/div>";
 sal += "";
-$(".sal")[0].innerHTML=sal;
+$(".member")[0].innerHTML=sal;
 }
 
 function expense(){
@@ -72,6 +72,6 @@ function expense(){
 	exp += "<\/table>";    
 	exp += "<\/div>";
 	exp += "";
-	$(".expense")[0].innerHTML=exp;
+	$(".member")[0].innerHTML=exp;
 	}
 

@@ -3,34 +3,46 @@
 
 <html>
     <head>
+    <link rel="stylesheet" type="text/css" href="css/home.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <title>Home</title>
         <script src="js/external/jquery.js"></script>
         <script src="js/member.js"></script>
-        <script src="js/salary.js"></script>     
-    </head>
-    <body onload="member()">
-        <h1>Home</h1>
-        <div class="member"></div>
+        <script src="js/salary.js"></script>  
         
-       <button id="getAll">getAll</button>
-          <div class="getAll"></div>
+    </head>
+    <body>
+   
+       <h1 id="head">HOME MANAGEMENT</h1>
+        <div class="div">
+<div class="dropdown">
+  <button class="dropbtn">Member</button><br>
+  <div class="dropdown-content" style="right:0;">
+    <p onclick="member()">Add Member</p>
+    <p id="getAll">Member Details </p>
+   
+  </div>
+</div><br><br><br>
+
+<div class="dropdown" >
+  <button class="dropbtn">Salary</button>
+  <div class="dropdown-content">
+    <p onclick="salary()">Add Salary</p>
+    <p id="">Salary Details</p>
+    </div>
+   </div><br><br><br>
+   <div class="dropdown" >
+  <button class="dropbtn">Expense</button>
+  <div class="dropdown-content">
+    <p onclick="expense()">Add Expense</p>
+    <p id="">Expense Details</p>
+   </div>
+</div>
+</div>
+<div class="memb">
+<div class="member"></div>
+</div>
+ 
           
-           <button onclick="salary()">Salary</button>
-             <div class="sal"></div>
-          
-          <button id="allSalary">allSalary</button>
-          <div class="allSalary"></div>
-          
-          <button onclick="expense()">Expense</button>
-          <div class="expense"></div>
-          
-           <button id="allExpense">allExpense</button>
-          <div class="allExpense"></div>
-         
-          
-          
-          
-    
     </body>
 </html>
