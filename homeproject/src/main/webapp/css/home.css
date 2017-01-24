@@ -14,7 +14,10 @@
 	float: left;
 	margin-left: 300px;
 	margin-top: 50px;
-	border:solid;
+}
+.member{
+	width:300px;
+	height: 200px;
 }
 #head
 {
