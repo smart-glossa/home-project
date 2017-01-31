@@ -26,24 +26,30 @@ mem += "<\/div>";
 mem += "";
 $(".member")[0].innerHTML=mem;
 }
-function salary(){
-var sal="";
-sal += "<div>";
-sal += "<table>";
-sal += "	<tr>";
-sal += "		<td>Member Id<\/td><td><input type=\"text\" id=\"id\"><\/input><\/td>";
-sal += "	<\/tr>";
-sal += "	<tr>";
-sal += "		<td>Salary<\/td><td><input type=\"text\" id=\"sal\"><\/input><\/td>";
-sal += "	<\/tr>";
-sal += "	<tr>";
-sal += "    	<td><\/td>";
-sal += "    	<td><button id=\"add\">Submit<\/button><button id=\"updat\">Update<\/button><\/td>";
-sal += "    <\/tr>";
-sal += "<\/table>";
-sal += "<\/div>";
-sal += "";
-$(".member")[0].innerHTML=sal;
+function income(){
+var inco="";
+inco += "<div>";
+inco += "<table>";
+inco += "	<tr>";
+inco += "		<td>Member Id<\/td><td><input type=\"text\" id=\"id\"><\/input><\/td>";
+inco += "	<\/tr>";
+inco += "	<tr>";
+inco += "		<td>Date<\/td><td><input type=\"date\" id=\"date\"><\/input><\/td>";
+inco += "	<\/tr>";
+inco += "	<tr>";
+inco += "		<td>Description<\/td><td><input type=\"text\" id=\"desc\"><\/input><\/td>";
+inco += "	<\/tr>";
+inco += "	<tr>";
+inco += "		<td>Amount<\/td><td><input type=\"num\" id=\"amount\"><\/input><\/td>";
+inco += "	<\/tr>";
+inco += "	<tr>";
+inco += "    	<td><\/td>";
+inco += "    	<td><button id=\"add\">Submit<\/button><button id=\"updat\">Update<\/button><\/td>";
+inco += "    <\/tr>";
+inco += "<\/table>";
+inco += "<\/div>";
+inco += "";
+$(".member")[0].innerHTML=inco;
 }
 
 function expense(){
@@ -52,6 +58,9 @@ function expense(){
 	exp += "<table>";
 	exp += "	<tr>";
 	exp += "		<td>Expense Id<\/td><td><input type=\"text\" id=\"exid\"><\/input><\/td>";
+	exp += "	<\/tr>";
+	exp += "	<tr>";
+	exp += "		<td>Date<\/td><td><input type=\"date\" id=\"date\"><\/input><\/td>";
 	exp += "	<\/tr>";
 	exp += "	<tr>";
 	exp += "		<td>Name<\/td><td><input type=\"text\" id=\"name\"><\/input><\/td>";

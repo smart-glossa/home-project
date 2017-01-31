@@ -9,7 +9,6 @@ import java.sql.Statement;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-      
 public final class HomeClass {
 	Connection con = null;
 	Statement stat = null;
@@ -32,7 +31,8 @@ public final class HomeClass {
 
 	public void updateMember(int mid, String mname, String dob, String mno) throws SQLException {
 		try {
-			String query = "update member set name='" + mname + "',dob='" + dob + "',mobilenumber='" + mno + "'where memberid=" + mid;
+			String query = "update member set name='" + mname + "',dob='" + dob + "',mobilenumber='" + mno
+					+ "'where memberid=" + mid;
 			stat.execute(query);
 
 		} finally {
@@ -40,128 +40,133 @@ public final class HomeClass {
 
 		}
 	}
-	
+
 	public void deleteMember(int mid) throws SQLException {
 		try {
-			String query="delete from member where memberid="+mid;
+			String query = "delete from member where memberid=" + mid;
 			stat.execute(query);
-			
+
 		} finally {
 			closeConnection();
 
 		}
-		
+
 	}
-	
+
 	public JSONObject getOne(int mid) throws SQLException {
-		JSONObject result=new JSONObject();
+		JSONObject result = new JSONObject();
 		try {
-			String query="select * from member where memberid="+mid;
-			rs=stat.executeQuery(query);
-			if(rs.next()){
-				result.put("memberid",rs.getString("memberid"));
-				result.put("name",rs.getString("name"));
-				result.put("dob",rs.getString("dob"));
-				result.put("mobilenumber",rs.getString("mobilenumber"));
-				
+			String query = "select * from member where memberid=" + mid;
+			rs = stat.executeQuery(query);
+			if (rs.next()) {
+				result.put("memberid", rs.getString("memberid"));
+				result.put("name", rs.getString("name"));
+				result.put("dob", rs.getString("dob"));
+				result.put("mobilenumber", rs.getString("mobilenumber"));
+
 			}
-			
+
 		} finally {
 			closeConnection();
 
 		}
 		return result;
-		
+
 	}
-	
+
 	public JSONArray getAll() throws SQLException {
-		JSONArray result=new JSONArray();
+		JSONArray result = new JSONArray();
 		try {
-			String query="select * from member";
-			rs=stat.executeQuery(query);
+			String query = "select * from member";
+			rs = stat.executeQuery(query);
 			while (rs.next()) {
-				JSONObject obj=new JSONObject();
-				obj.put("memberid",rs.getString("memberid"));
-				obj.put("name",rs.getString("name"));
-				obj.put("dob",rs.getString("dob"));
-				obj.put("mobilenumber",rs.getString("mobilenumber"));
+				JSONObject obj = new JSONObject();
+				obj.put("memberid", rs.getString("memberid"));
+				obj.put("name", rs.getString("name"));
+				obj.put("dob", rs.getString("dob"));
+				obj.put("mobilenumber", rs.getString("mobilenumber"));
 				result.put(obj);
-					
+
 			}
-			
+
 		} finally {
 			closeConnection();
 
 		}
 		return result;
-		
-		
+
 	}
-	
-	public void addSalary(int mid,String salary) throws SQLException {
+
+	public void addIncome(int mid, String date, String desc, String amount) throws SQLException {
 		try {
-			String query="insert into salary(memberid,salary)values("+mid+",'"+salary+"')";
+			String query = "insert into income(memberid,date,description,amount)values(" + mid + ",'" + date + "','"
+					+ desc + "','" + amount + "')";
 			stat.execute(query);
-			
+
 		} finally {
 			closeConnection();
 
 		}
-		
+
 	}
-	
-	public void updateSalary(int mid,String salary) throws SQLException {
+
+	public void updateIncome(int mid, String date, String desc, String amount) throws SQLException {
 		try {
-			String query="update salary set salary="+salary+" where memberid="+mid;
+			String query = "update income set date=" + date + ",description=" + desc + ",amount=" + amount
+					+ " where memberid=" + mid;
 			stat.execute(query);
-			
+
 		} finally {
 			closeConnection();
 
 		}
-		
+
 	}
-	
-	public void deleteSalary(int mid) throws SQLException {
+
+	public void deleteIncome(int mid) throws SQLException {
 		try {
-			String query="delete from salary where memberid="+mid;
+			String query = "delete from income where memberid=" + mid;
 			stat.execute(query);
-			
+
 		} finally {
 			closeConnection();
 
 		}
-		
+
 	}
-	
-	public JSONObject oneSalary(int mid) throws SQLException {
-		JSONObject result=new JSONObject();
+
+	public JSONObject oneIncome(int mid) throws SQLException {
+		JSONObject result = new JSONObject();
 		try {
-			String query="select * from salary where memberid="+mid;
-			rs=stat.executeQuery(query);
-			if(rs.next()){
-				result.put("memberid",rs.getString("memberid"));
-				result.put("salary",rs.getString("salary"));
-				
+			String query = "select * from income where memberid=" + mid;
+			rs = stat.executeQuery(query);
+			if (rs.next()) {
+				result.put("memberid", rs.getString("memberid"));
+				result.put("date", rs.getString("date"));
+				result.put("description", rs.getString("description"));
+				result.put("amount", rs.getString("amount"));
+
 			}
-			
+
 		} finally {
 			closeConnection();
 
 		}
 		return result;
-		
+
 	}
-	
-	public JSONArray allSalary() throws SQLException {
-		JSONArray result=new JSONArray();
+
+	public JSONArray allIncome() throws SQLException {
+		JSONArray result = new JSONArray();
 		try {
-			String query="select * from salary";
-			rs=stat.executeQuery(query);
+			String query = "select * from income";
+			rs = stat.executeQuery(query);
 			while (rs.next()) {
-				JSONObject obj=new JSONObject();
-				obj.put("memberid",rs.getString("memberid"));
-				obj.put("salary",rs.getString("salary"));
+				JSONObject obj = new JSONObject();
+				obj.put("memberid", rs.getString("memberid"));
+				obj.put("date", rs.getString("date"));
+				obj.put("description", rs.getString("description"));
+				obj.put("amount", rs.getString("amount"));
 				result.put(obj);
 			}
 		} finally {
@@ -169,91 +174,93 @@ public final class HomeClass {
 		}
 		return result;
 	}
-	public void addExpense(int exid,String name,String catename,String amount,String desc) throws SQLException {
+
+	public void addExpense(int exid, String date, String name, String catename, String amount, String desc)
+			throws SQLException {
 		try {
-			String query="insert into expense(exid,name,categoryname,amount,description)values("+exid+",'"+name+"','"+catename+"','"+amount+"','"+desc+"')";
+			String query = "insert into expense(exid,date,name,categoryname,amount,description)values(" + exid + ",'"
+					+ date + "','" + name + "','" + catename + "','" + amount + "','" + desc + "')";
 			stat.execute(query);
-		} finally {
-			closeConnection();
-           
-		}
-		
-	}
-	
-	public void updateExpense(int exid,String name,String catename,String amount,String desc) throws SQLException {
-		try {
-			String query="update expense set name='" +name+ "',categoryname='" +catename+ "',amount='" +amount+ "',description='" +desc+ "' where exid="+exid;
-			stat.execute(query);
-			
 		} finally {
 			closeConnection();
 
 		}
-		
+
 	}
-	
+
+	public void updateExpense(int exid, String date, String name, String catename, String amount, String desc)
+			throws SQLException {
+		try {
+			String query = "update expense set date='" + date + "',name='" + name + "',categoryname='" + catename
+					+ "',amount='" + amount + "',description='" + desc + "' where exid=" + exid;
+			stat.execute(query);
+
+		} finally {
+			closeConnection();
+
+		}
+
+	}
+
 	public void deleteExpense(int exid) throws SQLException {
 		try {
-			String query="delete from expense where exid="+exid;
+			String query = "delete from expense where exid=" + exid;
 			stat.execute(query);
-			
+
 		} finally {
 			closeConnection();
 
 		}
-		
-		
+
 	}
-	
+
 	public JSONObject expenseOne(int exid) throws SQLException {
-		JSONObject result=new JSONObject();
+		JSONObject result = new JSONObject();
 		try {
-			String query="select * from expense where exid="+exid;
-			rs=stat.executeQuery(query);
-			if(rs.next()){
-				result.put("name",rs.getString("name"));
-				result.put("categoryname",rs.getString("categoryname"));
-				result.put("amount",rs.getString("amount"));
-				result.put("description",rs.getString("description"));
-				
+			String query = "select * from expense where exid=" + exid;
+			rs = stat.executeQuery(query);
+			if (rs.next()) {
+				result.put("date", rs.getString("date"));
+				result.put("name", rs.getString("name"));
+				result.put("categoryname", rs.getString("categoryname"));
+				result.put("amount", rs.getString("amount"));
+				result.put("description", rs.getString("description"));
+
 			}
-			
-			
+
 		} finally {
 			closeConnection();
 
 		}
 		return result;
-	
-		
+
 	}
-	
+
 	public JSONArray expenseAll() throws SQLException {
-		JSONArray result=new JSONArray();
+		JSONArray result = new JSONArray();
 		try {
-			String query="select * from expense";
-			rs=stat.executeQuery(query);
+			String query = "select * from expense";
+			rs = stat.executeQuery(query);
 			while (rs.next()) {
-				JSONObject obj=new JSONObject();
-				obj.put("exid",rs.getString("exid"));
-				obj.put("name",rs.getString("name"));
-				obj.put("categoryname",rs.getString("categoryname"));
-				obj.put("amount",rs.getString("amount"));
-				obj.put("description",rs.getString("description"));
+				JSONObject obj = new JSONObject();
+				obj.put("exid", rs.getString("exid"));
+				obj.put("date", rs.getString("date"));
+				obj.put("name", rs.getString("name"));
+				obj.put("categoryname", rs.getString("categoryname"));
+				obj.put("amount", rs.getString("amount"));
+				obj.put("description", rs.getString("description"));
 				result.put(obj);
-					
+
 			}
-			
+
 		} finally {
 			closeConnection();
 
 		}
 		return result;
-		
-		
+
 	}
 
-	
 	private void openConnection() throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		con = DriverManager.getConnection("jdbc:mysql://" + HomeConstant.MYSQL_SERVER + "/" + HomeConstant.DATABASE,
@@ -274,7 +281,5 @@ public final class HomeClass {
 		}
 
 	}
-
-
 
 }
