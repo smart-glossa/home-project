@@ -98,7 +98,7 @@ public class HomeServlet extends HttpServlet {
 			int mid = Integer.parseInt(request.getParameter("id"));
 			String date = request.getParameter("date");
 			String desc = request.getParameter("desc");
-			String amount = request.getParameter("amount");
+			float amount = Float.parseFloat(request.getParameter("amount"));
 			JSONObject result = new JSONObject();
 			try {
 				HomeClass home = new HomeClass();
@@ -115,7 +115,7 @@ public class HomeServlet extends HttpServlet {
 			int mid = Integer.parseInt(request.getParameter("id"));
 			String date = request.getParameter("date");
 			String desc = request.getParameter("desc");
-			String amount = request.getParameter("amount");
+			float amount = Float.parseFloat(request.getParameter("amount"));
 			JSONObject result = new JSONObject();
 			try {
 				HomeClass home = new HomeClass();
@@ -166,15 +166,15 @@ public class HomeServlet extends HttpServlet {
 				result = home.allIncome();
 
 			} catch (Exception e) {
-				e.printStackTrace();
+
 			}
-			response.getWriter().print(result);
+			response.getWriter().println(result);
 		} else if (operation.equals("addExpense")) {
 			int exid = Integer.parseInt(request.getParameter("exid"));
 			String date = request.getParameter("date");
 			String name = request.getParameter("name");
 			String catename = request.getParameter("catename");
-			String amount = request.getParameter("amount");
+			float amount = Float.parseFloat(request.getParameter("amount"));
 			String desc = request.getParameter("desc");
 			JSONObject result = new JSONObject();
 			try {
@@ -191,7 +191,7 @@ public class HomeServlet extends HttpServlet {
 			String date = request.getParameter("date");
 			String name = request.getParameter("name");
 			String catename = request.getParameter("catename");
-			String amount = request.getParameter("amount");
+			float amount = Float.parseFloat(request.getParameter("amount"));
 			String desc = request.getParameter("desc");
 			JSONObject result = new JSONObject();
 			try {
@@ -229,16 +229,16 @@ public class HomeServlet extends HttpServlet {
 
 			}
 			response.getWriter().print(result);
-		} else if (operation.equals("expenseAll")) {
+		} else if (operation.equals("allExpense")) {
 			JSONArray result = new JSONArray();
 			try {
 				HomeClass home = new HomeClass();
-				result = home.expenseAll();
+				result = home.allExpense();
 
 			} catch (Exception e) {
 
 			}
-			response.getWriter().print(result);
+			response.getWriter().println(result);
 
 		}
 

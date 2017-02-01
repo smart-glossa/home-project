@@ -97,7 +97,7 @@ public final class HomeClass {
 
 	}
 
-	public void addIncome(int mid, String date, String desc, String amount) throws SQLException {
+	public void addIncome(int mid, String date, String desc, float amount) throws SQLException {
 		try {
 			String query = "insert into income(memberid,date,description,amount)values(" + mid + ",'" + date + "','"
 					+ desc + "','" + amount + "')";
@@ -110,7 +110,7 @@ public final class HomeClass {
 
 	}
 
-	public void updateIncome(int mid, String date, String desc, String amount) throws SQLException {
+	public void updateIncome(int mid, String date, String desc, float amount) throws SQLException {
 		try {
 			String query = "update income set date=" + date + ",description=" + desc + ",amount=" + amount
 					+ " where memberid=" + mid;
@@ -156,6 +156,24 @@ public final class HomeClass {
 
 	}
 
+	public JSONArray sumIncome() throws SQLException {
+		JSONArray result = new JSONArray();
+		try {
+			String query = "select sum(amount) from income";
+			rs = stat.executeQuery(query);
+			while (rs.next()) {
+				JSONObject obj = new JSONObject();
+				obj.put("amount", rs.getString("amount"));
+				result.put(obj);
+			}
+
+		} finally {
+			closeConnection();
+		}
+		return result;
+
+	}
+
 	public JSONArray allIncome() throws SQLException {
 		JSONArray result = new JSONArray();
 		try {
@@ -163,19 +181,27 @@ public final class HomeClass {
 			rs = stat.executeQuery(query);
 			while (rs.next()) {
 				JSONObject obj = new JSONObject();
-				obj.put("memberid", rs.getString("memberid"));
 				obj.put("date", rs.getString("date"));
 				obj.put("description", rs.getString("description"));
 				obj.put("amount", rs.getString("amount"));
-				result.put(obj);
+				int mid = rs.getInt("memberid");
+				String queryy = "select name from member where memberid=" + mid;
+				rs = stat.executeQuery(queryy);
+				while (rs.next()) {
+					obj.put("name", rs.getString("name"));
+					result.put(obj);
+				}
 			}
+
 		} finally {
 			closeConnection();
+
 		}
 		return result;
+
 	}
 
-	public void addExpense(int exid, String date, String name, String catename, String amount, String desc)
+	public void addExpense(int exid, String date, String name, String catename, float amount, String desc)
 			throws SQLException {
 		try {
 			String query = "insert into expense(exid,date,name,categoryname,amount,description)values(" + exid + ",'"
@@ -188,7 +214,7 @@ public final class HomeClass {
 
 	}
 
-	public void updateExpense(int exid, String date, String name, String catename, String amount, String desc)
+	public void updateExpense(int exid, String date, String name, String catename, float amount, String desc)
 			throws SQLException {
 		try {
 			String query = "update expense set date='" + date + "',name='" + name + "',categoryname='" + catename
@@ -235,8 +261,7 @@ public final class HomeClass {
 		return result;
 
 	}
-
-	public JSONArray expenseAll() throws SQLException {
+	public JSONArray allExpense() throws SQLException {
 		JSONArray result = new JSONArray();
 		try {
 			String query = "select * from expense";
@@ -245,17 +270,21 @@ public final class HomeClass {
 				JSONObject obj = new JSONObject();
 				obj.put("exid", rs.getString("exid"));
 				obj.put("date", rs.getString("date"));
-				obj.put("name", rs.getString("name"));
 				obj.put("categoryname", rs.getString("categoryname"));
 				obj.put("amount", rs.getString("amount"));
 				obj.put("description", rs.getString("description"));
-				result.put(obj);
+				int mid = rs.getInt("memberid");
+				String queryy = "select name from member where memberid=" + mid;
+				rs = stat.executeQuery(queryy);
+				while (rs.next()) {
+					obj.put("name", rs.getString("name"));
+					result.put(obj);
 
+				}
 			}
 
 		} finally {
 			closeConnection();
-
 		}
 		return result;
 

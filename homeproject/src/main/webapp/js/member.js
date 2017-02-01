@@ -195,10 +195,10 @@ $(document).ready(function(){
 		.done(function(result) {
 			var array = JSON.parse(result);
 			var table = "<table border=2px>";
-			table += "<tr><th>MemberId</th><th>Date</th><th>Description</th><th>Amount</th></tr>";
+			table += "<tr><th>Name</th><th>Date</th><th>Description</th><th>Amount</th></tr>";
 			for (i = 0; i < array.length; i++) {
 			table += "<tr>";
-			table += "<td>"+ array[i].memberid+ "</td>";
+			table += "<td>"+ array[i].name+ "</td>";
 			table += "<td>"+ array[i].date+ "</td>";
 			table += "<td>"+ array[i].description+ "</td>";
 			table += "<td>"+ array[i].amount+ "</td>";
@@ -311,7 +311,7 @@ $(document).ready(function(){
 	});
 	
 	$(document).on("click","#allExpense",function(){
-		var url = "/homeproject/Home?operation=expenseAll";
+		var url = "/homeproject/Home?operation=allExpense";
 		$.ajax({
 			url : url,
 			type : 'POST'
