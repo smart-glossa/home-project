@@ -2,36 +2,35 @@
 
 Model:
 <p>
-CREATE TABLE `member` (
+ CREATE TABLE `member` (
   `memberid` int(11) NOT NULL,
   `name` varchar(100) default NULL,
   `dob` date default NULL,
   `mobilenumber` varchar(100) default NULL,
-  PRIMARY KEY  (`memberid`),
-  UNIQUE KEY `name` (`name`)
+  PRIMARY KEY  (`memberid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
 </p>
 <p>
 CREATE TABLE `income` (
   `memberid` int(11) default NULL,
-  'date' date default NULL,
-  'description' varchar(100) default NULL,
-  `amount` varchar(100) default NULL,
-  KEY `memeberid` (`memberid`),
+  `date` date default NULL,
+  `description` varchar(100) default NULL,
+  `amount` float default NULL,
+  KEY `memberid` (`memberid`),
   CONSTRAINT `salary_sal_1` FOREIGN KEY (`memberid`) REFERENCES `member` (`memberid`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
 </p>
 <p>
  CREATE TABLE `expense` (
   `exid` int(11) NOT NULL,
-  'date' date default NULL,
-  `name` varchar(100) default NULL,
+  `date` date default NULL,
+  `memberid` int(11) default NULL,
   `categoryname` varchar(100) default NULL,
-  `amount` varchar(100) default NULL,
+  `amount` float default NULL,
   `description` varchar(100) default NULL,
   PRIMARY KEY  (`exid`),
-  KEY `name` (`name`),
-  CONSTRAINT `expense_ibfk_1` FOREIGN KEY (`name`) REFERENCES `member` (`name`) ON DELETE CASCADE
+  KEY `memberid` (`memberid`),
+  CONSTRAINT `expense_ibfk_1` FOREIGN KEY (`memberid`) REFERENCES `member` (`memberid`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
 </p>
 
