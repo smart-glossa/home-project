@@ -241,7 +241,7 @@ public class HomeServlet extends HttpServlet {
 			response.getWriter().println(result);
 
 		} else if (operation.equals("report")) {
-			JSONArray result = new JSONArray();
+			JSONObject result = new JSONObject();
 			try {
 				HomeClass home = new HomeClass();
 				result = home.report();

@@ -84,3 +84,13 @@ function expense(){
 	$(".member")[0].innerHTML=exp;
 	}
 
+function report(){
+	var rep="";
+	rep += "<input type=\"number\" id=\"amount\" readonly=\"true\"><\/input>";
+	rep += "<img src=\"images\/sub.png\"><\/img>";
+	rep += "<input type=\"number\" id=\"expense\" readonly=\"true\"><\/input>";
+	rep += "<img src=\"images\/equ.png\">";
+	rep += "<input type=\"number\" id=\"report\" readonly=\"true\"><\/input>";
+	rep += "";
+$(".member")[0].innerHTML=rep;
+}

@@ -334,6 +334,23 @@ $(document).ready(function(){
 			$('.member')[0].innerHTML = table;
 		});
 	})
+	$(document).on("click","#rep",function(){
+		var url="/homeproject/Home?operation=report";
+		$.ajax({
+			url:url,
+			type:'POST'
+		})
+		.done(function(result){
+			var array=JSON.parse(result);
+			var income=array.amount;
+			var expense=array.expense;
+		    var balance=income-expense;
+		    $("#amount").val(income);
+		    $("#expense").val(expense);
+		    $("#report").val(balance);
+			
+		})
+	})
 	
 	
 	
