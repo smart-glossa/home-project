@@ -169,6 +169,16 @@ public class HomeServlet extends HttpServlet {
 
 			}
 			response.getWriter().println(result);
+		} else if (operation.equals("sumIncome")) {
+			JSONObject result = new JSONObject();
+			try {
+				HomeClass home = new HomeClass();
+				result = home.sumIncome();
+
+			} catch (Exception e) {
+
+			}
+			response.getWriter().println(result);
 		} else if (operation.equals("addExpense")) {
 			int exid = Integer.parseInt(request.getParameter("exid"));
 			String date = request.getParameter("date");
@@ -240,6 +250,16 @@ public class HomeServlet extends HttpServlet {
 			}
 			response.getWriter().println(result);
 
+		} else if (operation.equals("sumExpense")) {
+			JSONArray result = new JSONArray();
+			try {
+				HomeClass home = new HomeClass();
+				result = home.sumExpense();
+
+			} catch (Exception e) {
+
+			}
+			response.getWriter().println(result);
 		}
 
 	}

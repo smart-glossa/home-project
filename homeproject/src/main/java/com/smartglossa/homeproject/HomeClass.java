@@ -156,15 +156,14 @@ public final class HomeClass {
 
 	}
 
-	public JSONArray sumIncome() throws SQLException {
-		JSONArray result = new JSONArray();
+	public JSONObject sumIncome() throws SQLException {
+		JSONObject result = new JSONObject();
 		try {
 			String query = "select sum(amount) from income";
 			rs = stat.executeQuery(query);
-			while (rs.next()) {
-				JSONObject obj = new JSONObject();
-				obj.put("amount", rs.getString("amount"));
-				result.put(obj);
+			if (rs.next()) {
+				result.put("amount", rs.getFloat("amount"));
+
 			}
 
 		} finally {
@@ -261,6 +260,7 @@ public final class HomeClass {
 		return result;
 
 	}
+
 	public JSONArray allExpense() throws SQLException {
 		JSONArray result = new JSONArray();
 		try {
@@ -285,6 +285,26 @@ public final class HomeClass {
 
 		} finally {
 			closeConnection();
+		}
+		return result;
+
+	}
+
+	public JSONArray sumExpense() throws SQLException {
+		JSONArray result = new JSONArray();
+		try {
+			String query = "select sum(amount) from expense";
+			rs = stat.executeQuery(query);
+			while (rs.next()) {
+				JSONObject obj = new JSONObject();
+				obj.put("amount", rs.getString("amount"));
+				result.put(obj);
+
+			}
+
+		} finally {
+			closeConnection();
+
 		}
 		return result;
 
