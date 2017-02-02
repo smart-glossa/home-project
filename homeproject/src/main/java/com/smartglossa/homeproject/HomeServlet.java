@@ -176,7 +176,7 @@ public class HomeServlet extends HttpServlet {
 				result = home.sumIncome();
 
 			} catch (Exception e) {
-
+              e.printStackTrace();
 			}
 			response.getWriter().println(result);
 		} else if (operation.equals("addExpense")) {
@@ -251,7 +251,7 @@ public class HomeServlet extends HttpServlet {
 			response.getWriter().println(result);
 
 		} else if (operation.equals("sumExpense")) {
-			JSONArray result = new JSONArray();
+			JSONObject result = new JSONObject();
 			try {
 				HomeClass home = new HomeClass();
 				result = home.sumExpense();

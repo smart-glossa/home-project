@@ -144,7 +144,7 @@ public final class HomeClass {
 				result.put("memberid", rs.getString("memberid"));
 				result.put("date", rs.getString("date"));
 				result.put("description", rs.getString("description"));
-				result.put("amount", rs.getString("amount"));
+				result.put("amount", rs.getFloat("amount"));
 
 			}
 
@@ -162,15 +162,12 @@ public final class HomeClass {
 			String query = "select sum(amount) from income";
 			rs = stat.executeQuery(query);
 			if (rs.next()) {
-				result.put("amount", rs.getFloat("amount"));
-
+				result.put("amount", rs.getFloat("sum(amount)"));
 			}
-
 		} finally {
 			closeConnection();
 		}
 		return result;
-
 	}
 
 	public JSONArray allIncome() throws SQLException {
@@ -182,7 +179,7 @@ public final class HomeClass {
 				JSONObject obj = new JSONObject();
 				obj.put("date", rs.getString("date"));
 				obj.put("description", rs.getString("description"));
-				obj.put("amount", rs.getString("amount"));
+				obj.put("amount", rs.getFloat("amount"));
 				int mid = rs.getInt("memberid");
 				String queryy = "select name from member where memberid=" + mid;
 				rs = stat.executeQuery(queryy);
@@ -248,7 +245,7 @@ public final class HomeClass {
 				result.put("date", rs.getString("date"));
 				result.put("name", rs.getString("name"));
 				result.put("categoryname", rs.getString("categoryname"));
-				result.put("amount", rs.getString("amount"));
+				result.put("amount", rs.getFloat("amount"));
 				result.put("description", rs.getString("description"));
 
 			}
@@ -271,7 +268,7 @@ public final class HomeClass {
 				obj.put("exid", rs.getString("exid"));
 				obj.put("date", rs.getString("date"));
 				obj.put("categoryname", rs.getString("categoryname"));
-				obj.put("amount", rs.getString("amount"));
+				obj.put("amount", rs.getFloat("amount"));
 				obj.put("description", rs.getString("description"));
 				int mid = rs.getInt("memberid");
 				String queryy = "select name from member where memberid=" + mid;
@@ -290,15 +287,13 @@ public final class HomeClass {
 
 	}
 
-	public JSONArray sumExpense() throws SQLException {
-		JSONArray result = new JSONArray();
+	public JSONObject sumExpense() throws SQLException {
+		JSONObject result = new JSONObject();
 		try {
 			String query = "select sum(amount) from expense";
 			rs = stat.executeQuery(query);
-			while (rs.next()) {
-				JSONObject obj = new JSONObject();
-				obj.put("amount", rs.getString("amount"));
-				result.put(obj);
+			if (rs.next()) {
+				result.put("amount", rs.getFloat("sum(amount)"));
 
 			}
 
