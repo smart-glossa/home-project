@@ -1,13 +1,8 @@
 $(document).ready(function(){
 	$(document).on("click","#addSub",function(){
-		var mid=$("#mid").val();
 		var mname=$("#mname").val();
 		var dob=$("#dob").val();
 		var mno=$("#mno").val();
-		if(mid==""){
-			$("#mid").focus().css("outline-color","red");
-			return;
-		}      
 		if(mname==""){
 			$("#mname").focus().css("outline-color","red");
 			return;
@@ -20,7 +15,7 @@ $(document).ready(function(){
 			$("#mno").focus().css("outline-color","red");
 			return;
 		}
-		var url="/homeproject/Home?operation=addMember&mid="+mid+"&mname="+mname+"&dob="+dob+"&mno="+mno;
+		var url="/homeproject/Home?operation=addMember&mname="+mname+"&dob="+dob+"&mno="+mno;
 		$.ajax({
 			url:url,
 			type:'POST'
@@ -88,10 +83,9 @@ $(document).ready(function(){
 		.done(function(result) {
 			var array = JSON.parse(result);
 			var table = "<table border=2px>";
-			table += "<tr><th>MemberId</th><th>Name</th><th>DateOfBirth</th><th>MObileNumber</th></tr>";
+			table += "<tr><th>Name</th><th>DateOfBirth</th><th>MObileNumber</th></tr>";
 			for (i = 0; i < array.length; i++) {
 			table += "<tr>";
-			table += "<td>"+ array[i].memberid+ "</td>";
 			table += "<td>"+ array[i].name+ "</td>";
 			table += "<td>"+ array[i].dob+ "</td>";
 			table += "<td>"+ array[i].mobilenumber+ "</td>";
@@ -326,8 +320,8 @@ $(document).ready(function(){
 			table += "<td>"+ array[i].date+ "</td>";
 			table += "<td>"+ array[i].name+ "</td>";
 			table += "<td>"+ array[i].categoryname+ "</td>";
-			table += "<td>"+ array[i].amount+ "</td>";
 			table += "<td>"+ array[i].description+ "</td>";
+			table += "<td>"+ array[i].amount+ "</td>";
 			table += "</tr>";
           }
 			table += "</table>";

@@ -22,14 +22,13 @@ public class HomeServlet extends HttpServlet {
 
 		String operation = request.getParameter("operation");
 		if (operation.equals("addMember")) {
-			int mid = Integer.parseInt(request.getParameter("mid"));
 			String mname = request.getParameter("mname");
 			String dob = request.getParameter("dob");
 			String mno = request.getParameter("mno");
 			JSONObject result = new JSONObject();
 			try {
 				HomeClass home = new HomeClass();
-				home.addMember(mid, mname, dob, mno);
+				home.addMember(mname, dob, mno);
 				result.put("status", 1);
 
 			} catch (Exception e) {
@@ -253,7 +252,7 @@ public class HomeServlet extends HttpServlet {
 		} else if (operation.equals("dateReport")) {
 			String fromdate = request.getParameter("fromdate");
 			String todate = request.getParameter("todate");
-			JSONObject res = new JSONObject();
+			JSONObject result = new JSONObject();
 			try {
 				HomeClass home = new HomeClass();
 				home.dateReport(fromdate, todate);
@@ -262,7 +261,7 @@ public class HomeServlet extends HttpServlet {
 				e.printStackTrace();
 
 			}
-			response.getWriter().print(res);
+			response.getWriter().print(result);
 		}
 
 	}

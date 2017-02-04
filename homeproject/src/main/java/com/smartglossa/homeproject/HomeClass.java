@@ -19,9 +19,9 @@ public final class HomeClass {
 
 	}
 
-	public void addMember(int mid, String mname, String dob, String mno) throws SQLException {
+	public void addMember(String mname, String dob, String mno) throws SQLException {
 		try {
-			String query = "insert into member(memberid,name,dob,mobilenumber) values(" + mid + ",'" + mname + "','"
+			String query = "insert into member(name,dob,mobilenumber) values('" + mname + "','"
 					+ dob + "','" + mno + "')";
 			stat.execute(query);
 		} finally {
@@ -299,7 +299,7 @@ public final class HomeClass {
 	public JSONObject dateReport(String fromdate, String todate) throws SQLException {
 		JSONObject result = new JSONObject();
 		try {
-			String query = "select sum(amount) from income where date between " + fromdate + " and " + todate + "";
+			String query = "select sum(amount) from income where date between '" + fromdate + "' and '" + todate + "'";
 			rs = stat.executeQuery(query);
 			if (rs.next()) {
 				result.put("amount", rs.getString("sum(amount)"));
