@@ -250,6 +250,19 @@ public class HomeServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			response.getWriter().print(result);
+		} else if (operation.equals("dateReport")) {
+			String fromdate = request.getParameter("fromdate");
+			String todate = request.getParameter("todate");
+			JSONObject res = new JSONObject();
+			try {
+				HomeClass home = new HomeClass();
+				home.dateReport(fromdate, todate);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+
+			}
+			response.getWriter().print(res);
 		}
 
 	}

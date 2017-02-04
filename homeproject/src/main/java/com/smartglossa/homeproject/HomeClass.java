@@ -278,13 +278,12 @@ public final class HomeClass {
 		try {
 			String query = "select sum(amount) from income";
 			rs = stat.executeQuery(query);
-			if(rs.next()) {
-			   result.put("amount", rs.getFloat("sum(amount)"));
+			if (rs.next()) {
+				result.put("amount", rs.getFloat("sum(amount)"));
 				String queryy = "select sum(amount) from expense";
 				rs = stat.executeQuery(queryy);
-				if(rs.next()) {
+				if (rs.next()) {
 					result.put("expense", rs.getFloat("sum(amount)"));
-					
 
 				}
 
@@ -292,6 +291,22 @@ public final class HomeClass {
 
 		} finally {
 			closeConnection();
+		}
+		return result;
+
+	}
+
+	public JSONObject dateReport(String fromdate, String todate) throws SQLException {
+		JSONObject result = new JSONObject();
+		try {
+			String query = "select sum(amount) from income where date between " + fromdate + " and " + todate + "";
+			rs = stat.executeQuery(query);
+			if (rs.next()) {
+				result.put("amount", rs.getString("sum(amount)"));
+			}
+		} finally {
+			closeConnection();
+
 		}
 		return result;
 
