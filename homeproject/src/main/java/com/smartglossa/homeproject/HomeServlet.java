@@ -169,16 +169,16 @@ public class HomeServlet extends HttpServlet {
 			}
 			response.getWriter().println(result);
 		} else if (operation.equals("addExpense")) {
-			int exid = Integer.parseInt(request.getParameter("exid"));
+			int sno = Integer.parseInt(request.getParameter("sno"));
+			String mid = request.getParameter("mid");
 			String date = request.getParameter("date");
-			String name = request.getParameter("name");
 			String catename = request.getParameter("catename");
-			float amount = Float.parseFloat(request.getParameter("amount"));
 			String desc = request.getParameter("desc");
+			float amount = Float.parseFloat(request.getParameter("amount"));
 			JSONObject result = new JSONObject();
 			try {
 				HomeClass home = new HomeClass();
-				home.addExpense(exid, date, name, catename, amount, desc);
+				home.addExpense(sno, mid, date, catename, desc, amount);
 				result.put("status", 1);
 			} catch (Exception e) {
 				result.put("status", 0);

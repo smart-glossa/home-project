@@ -204,20 +204,20 @@ $(document).ready(function(){
 	})
 	
 	$(document).on("click","#sub",function(){
-		var exid=$("#exid").val();
+		var sno=$("#sno").val();
+		var mid=$("#mid").val();
 		var date=$("#date").val();
-		var name=$("#name").val();
 		var catename=$("#catename").val();
 		var amount=$("#amount").val();
 		var desc=$("#desc").val();
-		if(exid==""){
-			$("#exid").focus().css("outline-color","red");
+		if(sno==""){
+			$("#sno").focus().css("outline-color","red");
 			return;
 		}      
-		if(date==""){
-				$("#date").focus().css("outline-color","red");
+		if(mid==""){
+				$("#mid").focus().css("outline-color","red");
 		}
-		if(name==""){
+		if(date==""){
 			$("#name").focus().css("outline-color","red");
 			return;
 		}
@@ -233,7 +233,7 @@ $(document).ready(function(){
 	       $("#desc").focus().css("outline-color","red");
 	       return;
         }
-		var url="/homeproject/Home?operation=addExpense&exid="+exid+"&date="+date+"&name="+name+"&catename="+catename+"&amount="+amount+"&desc="+desc;
+		var url="/homeproject/Home?operation=addExpense&sno="+sno+"&mid="+mid+"&date="+date+"&catename="+catename+"&desc="+desc+"&amount="+amount;
 		$.ajax({
 			url:url,
 			type:'POST'

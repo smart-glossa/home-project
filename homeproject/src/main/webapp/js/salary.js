@@ -57,13 +57,13 @@ function expense(){
 	exp += "<div>";
 	exp += "<table>";
 	exp += "	<tr>";
-	exp += "		<td>Expense Id<\/td><td><input type=\"text\" id=\"exid\"><\/input><\/td>";
+	exp += "		<td>Serial No<\/td><td><input type=\"text\" id=\"sno\"><\/input><\/td>";
+	exp += "	<\/tr>";
+	exp += "	<tr>";
+	exp += "		<td>Member Id<\/td><td><input type=\"text\" id=\"mid\"><\/input><\/td>";
 	exp += "	<\/tr>";
 	exp += "	<tr>";
 	exp += "		<td>Date<\/td><td><input type=\"date\" id=\"date\"><\/input><\/td>";
-	exp += "	<\/tr>";
-	exp += "	<tr>";
-	exp += "		<td>Name<\/td><td><input type=\"text\" id=\"name\"><\/input><\/td>";
 	exp += "	<\/tr>";
 	exp += "	<tr>";
 	exp += "		<td>Category Name<\/td><td><input type=\"text\" id=\"catename\"><\/input><\/td>";

@@ -21,8 +21,8 @@ public final class HomeClass {
 
 	public void addMember(String mname, String dob, String mno) throws SQLException {
 		try {
-			String query = "insert into member(name,dob,mobilenumber) values('" + mname + "','"
-					+ dob + "','" + mno + "')";
+			String query = "insert into member(name,dob,mobilenumber) values('" + mname + "','" + dob + "','" + mno
+					+ "')";
 			stat.execute(query);
 		} finally {
 			closeConnection();
@@ -183,11 +183,11 @@ public final class HomeClass {
 
 	}
 
-	public void addExpense(int exid, String date, String name, String catename, float amount, String desc)
+	public void addExpense(int sno, String mid, String date, String catename, String desc, float amount)
 			throws SQLException {
 		try {
-			String query = "insert into expense(exid,date,name,categoryname,amount,description)values(" + exid + ",'"
-					+ date + "','" + name + "','" + catename + "','" + amount + "','" + desc + "')";
+			String query = "insert into expense(sno,memberid,date,categoryname,description,amount)values(" + sno + ",'"
+					+ mid + "','" + date + "','" + catename + "','" + desc + "','" + amount + "')";
 			stat.execute(query);
 		} finally {
 			closeConnection();
