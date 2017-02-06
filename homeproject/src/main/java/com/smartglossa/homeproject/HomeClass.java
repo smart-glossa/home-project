@@ -279,11 +279,11 @@ public final class HomeClass {
 			String query = "select sum(amount) from income";
 			rs = stat.executeQuery(query);
 			if (rs.next()) {
-				result.put("amount", rs.getFloat("sum(amount)"));
+				result.put("amount", rs.getFloat(1));
 				String queryy = "select sum(amount) from expense";
 				rs = stat.executeQuery(queryy);
 				if (rs.next()) {
-					result.put("expense", rs.getFloat("sum(amount)"));
+					result.put("expense", rs.getFloat(1));
 
 				}
 
@@ -302,7 +302,7 @@ public final class HomeClass {
 			String query = "select sum(amount) from income where date between '" + fromdate + "' and '" + todate + "'";
 			rs = stat.executeQuery(query);
 			if (rs.next()) {
-				result.put("amount", rs.getString("sum(amount)"));
+				result.put("amount", rs.getFloat(1));
 			}
 		} finally {
 			closeConnection();

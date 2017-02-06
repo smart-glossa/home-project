@@ -313,7 +313,7 @@ $(document).ready(function(){
 		.done(function(result) {
 			var array = JSON.parse(result);
 			var table = "<table border=2px>";
-			table += "<tr><th>ExpenseId</th><th>Date</th><th>Name</th><th>CategoryName</th><th>Amount</th><th>Description</th></tr>";
+			table += "<tr><th>ExpenseId</th><th>Date</th><th>Name</th><th>CategoryName</th><th>Description</th><th>Amount</th></tr>";
 			for (i = 0; i < array.length; i++) {
 			table += "<tr>";
 			table += "<td>"+ array[i].exid+ "</td>";

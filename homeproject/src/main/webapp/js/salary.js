@@ -15,7 +15,7 @@ mem += "	<tr>";
 mem += "		<td>Date Of Birth<\/td><td><input type=\"date\" id=\"dob\"><\/input><\/td>";
 mem += "    <\/tr>";
 mem += "    <tr>";
-mem += "    	<td>Mobile Number<\/td><td><input type=\"number\" id=\"mno\"><\/input><\/td>";
+mem += "    	<td>Mobile Number<\/td><td><input type=\"text\" id=\"mno\"><\/input><\/td>";
 mem += "    <\/tr>";
 mem += "    <tr>";
 mem += "    	<td><\/td>";
@@ -40,7 +40,7 @@ inco += "	<tr>";
 inco += "		<td>Description<\/td><td><input type=\"text\" id=\"desc\"><\/input><\/td>";
 inco += "	<\/tr>";
 inco += "	<tr>";
-inco += "		<td>Amount<\/td><td><input type=\"num\" id=\"amount\"><\/input><\/td>";
+inco += "		<td>Amount<\/td><td><input type=\"text\" id=\"amount\"><\/input><\/td>";
 inco += "	<\/tr>";
 inco += "	<tr>";
 inco += "    	<td><\/td>";
@@ -69,7 +69,7 @@ function expense(){
 	exp += "		<td>Category Name<\/td><td><input type=\"text\" id=\"catename\"><\/input><\/td>";
 	exp += "    <\/tr>";
 	exp += "    <tr>";
-	exp += "    	<td>Amount<\/td><td><input type=\"number\" id=\"amount\"><\/input><\/td>";
+	exp += "    	<td>Amount<\/td><td><input type=\"text\" id=\"amount\"><\/input><\/td>";
 	exp += "    <\/tr>";
 	exp += "    <tr>";
 	exp += "    	<td>Description<\/td><td><input type=\"text\" id=\"desc\"><\/input><\/td>";
@@ -86,11 +86,11 @@ function expense(){
 
 function report(){
 	var rep="";
-	rep += "<input type=\"number\" id=\"amount\" readonly=\"true\"><\/input>";
+	rep += "<input type=\"text\" id=\"amount\" readonly=\"true\"><\/input>";
 	rep += "<img src=\"images\/sub.png\"><\/img>";
-	rep += "<input type=\"number\" id=\"expense\" readonly=\"true\"><\/input>";
+	rep += "<input type=\"text\" id=\"expense\" readonly=\"true\"><\/input>";
 	rep += "<img src=\"images\/equ.png\">";
-	rep += "<input type=\"number\" id=\"report\" readonly=\"true\"><\/input>";
+	rep += "<input type=\"text\" id=\"report\" readonly=\"true\"><\/input>";
 	rep += "";
 $(".member")[0].innerHTML=rep;
 }
