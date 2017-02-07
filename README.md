@@ -2,16 +2,16 @@
 
 Model:
 <p>
- CREATE TABLE `member` (
-  `memberid` int(11) NOT NULL,
+  CREATE TABLE `member` (
+  `memberid` int(11) NOT NULL auto_increment,
   `name` varchar(100) default NULL,
   `dob` date default NULL,
   `mobilenumber` varchar(100) default NULL,
   PRIMARY KEY  (`memberid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1
 </p>
 <p>
-CREATE TABLE `income` (
+ CREATE TABLE `income` (
   `memberid` int(11) default NULL,
   `date` date default NULL,
   `description` varchar(100) default NULL,
@@ -21,17 +21,17 @@ CREATE TABLE `income` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
 </p>
 <p>
- CREATE TABLE `expense` (
-  `exid` int(11) NOT NULL,
+CREATE TABLE `expense` (
+  `exid` int(11) NOT NULL auto_increment,
   `date` date default NULL,
   `memberid` int(11) default NULL,
   `categoryname` varchar(100) default NULL,
-  `amount` float default NULL,
   `description` varchar(100) default NULL,
+  `amount` float default NULL,
   PRIMARY KEY  (`exid`),
   KEY `memberid` (`memberid`),
   CONSTRAINT `expense_ibfk_1` FOREIGN KEY (`memberid`) REFERENCES `member` (`memberid`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
 </p>
 
 <p>
