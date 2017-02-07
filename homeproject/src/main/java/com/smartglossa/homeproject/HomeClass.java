@@ -183,11 +183,11 @@ public final class HomeClass {
 
 	}
 
-	public void addExpense(int sno, String mid, String date, String catename, String desc, float amount)
+	public void addExpense(int exid, String date, int mid, String catename, String desc, float amount)
 			throws SQLException {
 		try {
-			String query = "insert into expense(sno,memberid,date,categoryname,description,amount)values(" + sno + ",'"
-					+ mid + "','" + date + "','" + catename + "','" + desc + "','" + amount + "')";
+			String query = "insert into expense(exid,date,memberid,categoryname,description,amount)values(" + exid
+					+ ",'" + date + "'," + mid + ",'" + catename + "','" + desc + "','" + amount + "')";
 			stat.execute(query);
 		} finally {
 			closeConnection();
@@ -196,11 +196,11 @@ public final class HomeClass {
 
 	}
 
-	public void updateExpense(int exid, String date, String name, String catename, float amount, String desc)
+	public void updateExpense(int exid, String date, int mid, String catename, float amount, String desc)
 			throws SQLException {
 		try {
-			String query = "update expense set date='" + date + "',name='" + name + "',categoryname='" + catename
-					+ "',amount='" + amount + "',description='" + desc + "' where exid=" + exid;
+			String query = "update expense set date='" + date + "',memberid='" + mid + "',categoryname='" + catename
+					+ "',description='" + desc + "',amount='" + amount + "' where exid=" + exid;
 			stat.execute(query);
 
 		} finally {
@@ -229,10 +229,10 @@ public final class HomeClass {
 			rs = stat.executeQuery(query);
 			if (rs.next()) {
 				result.put("date", rs.getString("date"));
-				result.put("name", rs.getString("name"));
+				result.put("mid", rs.getInt("mid"));
 				result.put("categoryname", rs.getString("categoryname"));
-				result.put("amount", rs.getFloat("amount"));
 				result.put("description", rs.getString("description"));
+				result.put("amount", rs.getFloat("amount"));
 
 			}
 

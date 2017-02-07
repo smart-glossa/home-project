@@ -204,36 +204,36 @@ $(document).ready(function(){
 	})
 	
 	$(document).on("click","#sub",function(){
-		var sno=$("#sno").val();
-		var mid=$("#mid").val();
+		var sno=$("#exid").val();
 		var date=$("#date").val();
+		var mid=$("#mid").val();
 		var catename=$("#catename").val();
 		var amount=$("#amount").val();
 		var desc=$("#desc").val();
-		if(sno==""){
-			$("#sno").focus().css("outline-color","red");
+		if(exid==""){
+			$("#exid").focus().css("outline-color","red");
 			return;
 		}      
-		if(mid==""){
-				$("#mid").focus().css("outline-color","red");
-		}
 		if(date==""){
-			$("#name").focus().css("outline-color","red");
+				$("#date").focus().css("outline-color","red");
+		}
+		if(mid==""){
+			$("#mid").focus().css("outline-color","red");
 			return;
 		}
 		if(catename==""){
 			$("#catename").focus().css("outline-color","red");
 			return;
 		}
-		if(amount==""){
-			$("#amount").focus().css("outline-color","red");
+		if(desc==""){
+			$("#desc").focus().css("outline-color","red");
 			return;
 		}
-	    if(desc==""){
-	       $("#desc").focus().css("outline-color","red");
+	    if(amount==""){
+	       $("#amount").focus().css("outline-color","red");
 	       return;
         }
-		var url="/homeproject/Home?operation=addExpense&sno="+sno+"&mid="+mid+"&date="+date+"&catename="+catename+"&desc="+desc+"&amount="+amount;
+		var url="/homeproject/Home?operation=addExpense&exid="+exid+"&date="+date+"&mid="+mid+"&catename="+catename+"&desc="+desc+"&amount="+amount;
 		$.ajax({
 			url:url,
 			type:'POST'
@@ -247,10 +247,10 @@ $(document).ready(function(){
 	$(document).on("click","#upda",function(){
 		var exid=$("#exid").val();
 		var date=$("#date").val();
-		var name=$("#name").val();
+		var mid=$("#mid").val();
 		var catename=$("#catename").val();
-		var amount=$("#amount").val();
 		var desc=$("#desc").val();
+		var amount=$("#amount").val();
 		if(exid==""){
 			$("#exid").focus().css("outline-color","red");
 			return;
@@ -258,23 +258,23 @@ $(document).ready(function(){
 		if(date==""){
 			$("#date").focus().css("outline-color","red");
 		}
-		if(name==""){
-			$("#name").focus().css("outline-color","red");
+		if(mid==""){
+			$("#mid").focus().css("outline-color","red");
 			return;
 		}
 		if(catename==""){
 			$("#catename").focus().css("outline-color","red");
 			return;
 		}
-		if(amount==""){
-			$("#amount").focus().css("outline-color","red");
-			return;
-		}
 		if(desc==""){
 			$("#desc").focus().css("outline-color","red");
 			return;
 		}
-		var url="/homeproject/Home?operation=updateExpense&exid="+exid+"&date="+date+"&name="+name+"&catename="+catename+"&amount="+amount+"&desc="+desc;
+		if(amount==""){
+			$("#amount").focus().css("outline-color","red");
+			return;
+		}
+		var url="/homeproject/Home?operation=updateExpense&exid="+exid+"&date="+date+"&mid="+mid+"&catename="+catename+"&desc="+desc+"&amount="+amount;
 		$.ajax({
 			url:url,
 			type:'POST'
@@ -296,10 +296,10 @@ $(document).ready(function(){
 			}).done(function(result){
 				result=JSON.parse(result);
 				$("#date").val(result.date);
-				$("#name").val(result.name);
+				$("#mid").val(result.memberid);
 				$("#catename").val(result.categoryname);
-				$("#amount").val(result.amount);
 				$("#desc").val(result.description);
+				$("#amount").val(result.amount);
 			})
 		}
 	});
@@ -315,8 +315,8 @@ $(document).ready(function(){
 			var table = "<table border=2px>";
 			table += "<tr><th>ExpenseId</th><th>Date</th><th>Name</th><th>CategoryName</th><th>Description</th><th>Amount</th></tr>";
 			for (i = 0; i < array.length; i++) {
-			table += "<tr>";
-			table += "<td>"+ array[i].exid+ "</td>";
+		    table += "<tr>";
+			table += "<td>"+i+""+ array[i].exid+ "</td>";
 			table += "<td>"+ array[i].date+ "</td>";
 			table += "<td>"+ array[i].name+ "</td>";
 			table += "<td>"+ array[i].categoryname+ "</td>";

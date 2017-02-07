@@ -120,7 +120,6 @@ public class HomeServlet extends HttpServlet {
 				HomeClass home = new HomeClass();
 				home.updateIncome(mid, date, desc, amount);
 				result.put("status", 1);
-
 			} catch (Exception e) {
 				result.put("status", 0);
 				e.printStackTrace();
@@ -169,16 +168,16 @@ public class HomeServlet extends HttpServlet {
 			}
 			response.getWriter().println(result);
 		} else if (operation.equals("addExpense")) {
-			int sno = Integer.parseInt(request.getParameter("sno"));
-			String mid = request.getParameter("mid");
+			int exid = Integer.parseInt(request.getParameter("exid"));
 			String date = request.getParameter("date");
+			int mid = Integer.parseInt(request.getParameter("mid"));
 			String catename = request.getParameter("catename");
 			String desc = request.getParameter("desc");
 			float amount = Float.parseFloat(request.getParameter("amount"));
 			JSONObject result = new JSONObject();
 			try {
 				HomeClass home = new HomeClass();
-				home.addExpense(sno, mid, date, catename, desc, amount);
+				home.addExpense(exid, date, mid, catename, desc, amount);
 				result.put("status", 1);
 			} catch (Exception e) {
 				result.put("status", 0);
@@ -188,14 +187,14 @@ public class HomeServlet extends HttpServlet {
 		} else if (operation.equals("updateExpense")) {
 			int exid = Integer.parseInt(request.getParameter("exid"));
 			String date = request.getParameter("date");
-			String name = request.getParameter("name");
+			int mid = Integer.parseInt(request.getParameter("mid"));
 			String catename = request.getParameter("catename");
-			float amount = Float.parseFloat(request.getParameter("amount"));
 			String desc = request.getParameter("desc");
+			float amount = Float.parseFloat(request.getParameter("amount"));
 			JSONObject result = new JSONObject();
 			try {
 				HomeClass home = new HomeClass();
-				home.updateExpense(exid, date, name, catename, amount, desc);
+				home.updateExpense(exid, date, mid, catename, amount, desc);
 				result.put("status", 1);
 			} catch (Exception e) {
 				result.put("status", 0);
