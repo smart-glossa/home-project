@@ -83,13 +83,17 @@ $(document).ready(function(){
 		.done(function(result) {
 			var array = JSON.parse(result);
 			var table = "<table border=2px>";
-			table += "<tr><th>Name</th><th>DateOfBirth</th><th>MObileNumber</th></tr>";
+			table += "<tr><th>SNo</th><th>Name</th><th>DateOfBirth</th><th>MObileNumber</th></tr>";
 			for (i = 0; i < array.length; i++) {
+            var i = 1;
 			table += "<tr>";
+			table += "<td>"+ i + "</td>";
 			table += "<td>"+ array[i].name+ "</td>";
 			table += "<td>"+ array[i].dob+ "</td>";
 			table += "<td>"+ array[i].mobilenumber+ "</td>";
+			
 			table += "</tr>";
+			
           }
 			table += "</table>";
 			$('.member')[0].innerHTML = table;
@@ -189,9 +193,12 @@ $(document).ready(function(){
 		.done(function(result) {
 			var array = JSON.parse(result);
 			var table = "<table border=2px>";
-			table += "<tr><th>Name</th><th>Date</th><th>Description</th><th>Amount</th></tr>";
+			table += "<tr><th>SNo<th>Name</th><th>Date</th><th>Description</th><th>Amount</th></tr>";
 			for (i = 0; i < array.length; i++) {
+				var a=0;
+				a++;
 			table += "<tr>";
+			table += "<td>"+ a + "</td>";
 			table += "<td>"+ array[i].name+ "</td>";
 			table += "<td>"+ array[i].date+ "</td>";
 			table += "<td>"+ array[i].description+ "</td>";
@@ -204,16 +211,11 @@ $(document).ready(function(){
 	})
 	
 	$(document).on("click","#sub",function(){
-		var sno=$("#exid").val();
 		var date=$("#date").val();
 		var mid=$("#mid").val();
 		var catename=$("#catename").val();
 		var amount=$("#amount").val();
 		var desc=$("#desc").val();
-		if(exid==""){
-			$("#exid").focus().css("outline-color","red");
-			return;
-		}      
 		if(date==""){
 				$("#date").focus().css("outline-color","red");
 		}
@@ -233,7 +235,7 @@ $(document).ready(function(){
 	       $("#amount").focus().css("outline-color","red");
 	       return;
         }
-		var url="/homeproject/Home?operation=addExpense&exid="+exid+"&date="+date+"&mid="+mid+"&catename="+catename+"&desc="+desc+"&amount="+amount;
+		var url="/homeproject/Home?operation=addExpense&date="+date+"&mid="+mid+"&catename="+catename+"&desc="+desc+"&amount="+amount;
 		$.ajax({
 			url:url,
 			type:'POST'
@@ -313,10 +315,12 @@ $(document).ready(function(){
 		.done(function(result) {
 			var array = JSON.parse(result);
 			var table = "<table border=2px>";
-			table += "<tr><th>ExpenseId</th><th>Date</th><th>Name</th><th>CategoryName</th><th>Description</th><th>Amount</th></tr>";
+			table += "<tr><th>Sno</th><th>Date</th><th>Name</th><th>CategoryName</th><th>Description</th><th>Amount</th></tr>";
 			for (i = 0; i < array.length; i++) {
+				var a=0;
+				a++;
 		    table += "<tr>";
-			table += "<td>"+i+""+ array[i].exid+ "</td>";
+		    table += "<td>"+a+ "</td>";
 			table += "<td>"+ array[i].date+ "</td>";
 			table += "<td>"+ array[i].name+ "</td>";
 			table += "<td>"+ array[i].categoryname+ "</td>";
@@ -345,17 +349,26 @@ $(document).ready(function(){
 			
 		})
 	})
+	$(document).on("click","#amount",function(){
+		var url="/homeproject/Home?operation=dateReport&fromdate="+fromdate+"&todate="+todate;
+		$.ajax({
+			url:url,
+			type:'POST'
+		}).done(function(result){
+			var array=JSON.parse(result);
+			var table="<table border=2px>"
+				table +="<tr><th>Income</th><th>Expense</th><th>Balance</th>"
+			for(i=0;i<array.lenght;i++)	{	
+			table +="<tr>";
+			table +="<td>" + array[i].amount+ "</td>";
+			table +="<td>" + array[i].date + "</td>";
+			table +="<td>" + array[i].bal + "</td>";
+			table +="</tr>";
+			}
+			table +="</table>";
+			$(".repo")[0].innerHTML = table;
+		});
+		
+	});
 	
-	
-	
-	
-	
-	
-	 
-	
-	
-	
-	
-	
-	
-})
+});

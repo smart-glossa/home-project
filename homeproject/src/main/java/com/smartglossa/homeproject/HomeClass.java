@@ -183,11 +183,10 @@ public final class HomeClass {
 
 	}
 
-	public void addExpense(int exid, String date, int mid, String catename, String desc, float amount)
-			throws SQLException {
+	public void addExpense(String date, int mid, String catename, String desc, float amount) throws SQLException {
 		try {
-			String query = "insert into expense(exid,date,memberid,categoryname,description,amount)values(" + exid
-					+ ",'" + date + "'," + mid + ",'" + catename + "','" + desc + "','" + amount + "')";
+			String query = "insert into expense(date,memberid,categoryname,description,amount)values('" + date + "',"
+					+ mid + ",'" + catename + "','" + desc + "','" + amount + "')";
 			stat.execute(query);
 		} finally {
 			closeConnection();
@@ -302,7 +301,13 @@ public final class HomeClass {
 			String query = "select sum(amount) from income where date between '" + fromdate + "' and '" + todate + "'";
 			rs = stat.executeQuery(query);
 			if (rs.next()) {
-				result.put("amount", rs.getFloat(1));
+				result.put("amount", rs.getFloat("sum(amount)"));
+				String queryy = "select sum(amount) from expense  where date between '" + fromdate + "' and'" + todate
+						+ "'";
+				rs = stat.executeQuery(queryy);
+				if (rs.next()) {
+					result.put("date", rs.getFloat("sum(amount)"));
+				}
 			}
 		} finally {
 			closeConnection();

@@ -6,9 +6,6 @@ var mem="";
 mem += "<div>";
 mem += "<table>";
 mem += "	<tr>";
-mem += "		<td>Member Id<\/td><td><input type=\"text\" id=\"mid\"><\/input><\/td>";
-mem += "	<\/tr>";
-mem += "	<tr>";
 mem += "		<td>Name<\/td><td><input type=\"text\" id=\"mname\"><\/input><\/td>";
 mem += "	<\/tr>";
 mem += "	<tr>";
@@ -57,9 +54,6 @@ function expense(){
 	exp += "<div>";
 	exp += "<table>";
 	exp += "	<tr>";
-	exp += "		<td>Expense Id<\/td><td><input type=\"text\" id=\"exid\"><\/input><\/td>";
-	exp += "	<\/tr>";
-	exp += "	<tr>";
 	exp += "		<td>Date<\/td><td><input type=\"date\" id=\"date\"><\/input><\/td>";
 	exp += "	<\/tr>";
 	exp += "	<tr>";
@@ -86,11 +80,23 @@ function expense(){
 
 function report(){
 	var rep="";
-	rep += "<input type=\"text\" id=\"amount\" readonly=\"true\"><\/input>";
-	rep += "<img src=\"images\/sub.png\"><\/img>";
-	rep += "<input type=\"text\" id=\"expense\" readonly=\"true\"><\/input>";
-	rep += "<img src=\"images\/equ.png\">";
-	rep += "<input type=\"text\" id=\"report\" readonly=\"true\"><\/input>";
-	rep += "";
+	rep +="<table>";
+	rep +="<tr>";
+	rep +="<td>Monthly report<\/td>";
+	rep +="<\/tr>";
+	rep +="<tr>";
+	rep += "<td><input type=\"text\" id=\"amount\" readonly=\"true\"><\/input><\/td>";
+	rep += "<td><input type=\"text\" id=\"expense\" readonly=\"true\"><\/input><\/td>";
+	rep += "<td><input type=\"text\" id=\"report\" readonly=\"true\"><\/input><\/td>";
+	rep +="<\/tr>";
+	rep +="<tr>";
+	rep +="<td>Date wise report<\/td>";
+	rep +="<\/tr>";
+	rep +="<tr>";
+	rep +="<td><input type=\"date\" id=\"fromdate\"><\/input><\/td>";
+	rep +="<td><input type=\"date\" id=\"todate\"><\/input><\/td>";
+	rep +="<td><button id=\"amount\">cal<\/button><\/td>";
+	rep +="<\/tr>";
+    rep += "";
 $(".member")[0].innerHTML=rep;
 }
