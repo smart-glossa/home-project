@@ -350,6 +350,8 @@ $(document).ready(function(){
 		})
 	})
 	$(document).on("click","#amount",function(){
+		var fromdate=$("#fromdate").val();
+		var todate=$("#todate").val();
 		var url="/homeproject/Home?operation=dateReport&fromdate="+fromdate+"&todate="+todate;
 		$.ajax({
 			url:url,
@@ -358,13 +360,16 @@ $(document).ready(function(){
 			var array=JSON.parse(result);
 			var table="<table border=2px>"
 				table +="<tr><th>Income</th><th>Expense</th><th>Balance</th>"
-			for(i=0;i<array.lenght;i++)	{	
+			
+				var amount=array.amount;
+				var date=array.date;
+				var bal=amount-date;	
 			table +="<tr>";
-			table +="<td>" + array[i].amount+ "</td>";
-			table +="<td>" + array[i].date + "</td>";
-			table +="<td>" + array[i].bal + "</td>";
+			table +="<td>" + amount+ "</td>";
+			table +="<td>" + date + "</td>";
+			table +="<td>" + bal + "</td>";
 			table +="</tr>";
-			}
+			
 			table +="</table>";
 			$(".repo")[0].innerHTML = table;
 		});
