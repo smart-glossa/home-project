@@ -41,39 +41,6 @@ public final class HomeClass {
 		}
 	}
 
-	public void deleteMember(int mid) throws SQLException {
-		try {
-			String query = "delete from member where memberid=" + mid;
-			stat.execute(query);
-
-		} finally {
-			closeConnection();
-
-		}
-
-	}
-
-	public JSONObject getOne(int mid) throws SQLException {
-		JSONObject result = new JSONObject();
-		try {
-			String query = "select * from member where memberid=" + mid;
-			rs = stat.executeQuery(query);
-			if (rs.next()) {
-				result.put("memberid", rs.getString("memberid"));
-				result.put("name", rs.getString("name"));
-				result.put("dob", rs.getString("dob"));
-				result.put("mobilenumber", rs.getString("mobilenumber"));
-
-			}
-
-		} finally {
-			closeConnection();
-
-		}
-		return result;
-
-	}
-
 	public JSONArray getAll() throws SQLException {
 		JSONArray result = new JSONArray();
 		try {
@@ -120,39 +87,6 @@ public final class HomeClass {
 			closeConnection();
 
 		}
-
-	}
-
-	public void deleteIncome(int mid) throws SQLException {
-		try {
-			String query = "delete from income where memberid=" + mid;
-			stat.execute(query);
-
-		} finally {
-			closeConnection();
-
-		}
-
-	}
-
-	public JSONObject oneIncome(int mid) throws SQLException {
-		JSONObject result = new JSONObject();
-		try {
-			String query = "select * from income where memberid=" + mid;
-			rs = stat.executeQuery(query);
-			if (rs.next()) {
-				result.put("memberid", rs.getString("memberid"));
-				result.put("date", rs.getString("date"));
-				result.put("description", rs.getString("description"));
-				result.put("amount", rs.getFloat("amount"));
-
-			}
-
-		} finally {
-			closeConnection();
-
-		}
-		return result;
 
 	}
 
@@ -206,40 +140,6 @@ public final class HomeClass {
 			closeConnection();
 
 		}
-
-	}
-
-	public void deleteExpense(int exid) throws SQLException {
-		try {
-			String query = "delete from expense where exid=" + exid;
-			stat.execute(query);
-
-		} finally {
-			closeConnection();
-
-		}
-
-	}
-
-	public JSONObject expenseOne(int exid) throws SQLException {
-		JSONObject result = new JSONObject();
-		try {
-			String query = "select * from expense where exid=" + exid;
-			rs = stat.executeQuery(query);
-			if (rs.next()) {
-				result.put("date", rs.getString("date"));
-				result.put("mid", rs.getInt("mid"));
-				result.put("categoryname", rs.getString("categoryname"));
-				result.put("description", rs.getString("description"));
-				result.put("amount", rs.getFloat("amount"));
-
-			}
-
-		} finally {
-			closeConnection();
-
-		}
-		return result;
 
 	}
 

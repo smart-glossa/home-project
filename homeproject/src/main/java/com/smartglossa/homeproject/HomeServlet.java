@@ -54,36 +54,7 @@ public class HomeServlet extends HttpServlet {
 
 			}
 			response.getWriter().print(result);
-		} else if (operation.equals("deleteMember")) {
-			int mid = Integer.parseInt(request.getParameter("id"));
-			JSONObject result = new JSONObject();
-			try {
-				HomeClass home = new HomeClass();
-				home.deleteMember(mid);
-				result.put("status", 1);
-
-			} catch (Exception e) {
-				result.put("status", 0);
-				e.printStackTrace();
-
-			}
-
-			response.getWriter().print(result);
-		} else if (operation.equals("getOne")) {
-			int mid = Integer.parseInt(request.getParameter("id"));
-			JSONObject result = new JSONObject();
-			try {
-				HomeClass home = new HomeClass();
-				result = home.getOne(mid);
-
-			} catch (Exception e) {
-				e.printStackTrace();
-
-			}
-			response.getWriter().print(result);
-		}
-
-		else if (operation.equals("getAll")) {
+		} else if (operation.equals("getAll")) {
 			JSONArray result = new JSONArray();
 			try {
 				HomeClass home = new HomeClass();
@@ -122,37 +93,6 @@ public class HomeServlet extends HttpServlet {
 				result.put("status", 1);
 			} catch (Exception e) {
 				result.put("status", 0);
-				e.printStackTrace();
-
-			}
-			response.getWriter().print(result);
-		}
-
-		else if (operation.equals("deleteIncome")) {
-			int mid = Integer.parseInt(request.getParameter("id"));
-			JSONObject result = new JSONObject();
-			try {
-				HomeClass home = new HomeClass();
-				home.deleteIncome(mid);
-				result.put("status", 1);
-
-			} catch (Exception e) {
-				result.put("status", 0);
-				e.printStackTrace();
-
-			}
-			response.getWriter().print(result);
-
-		}
-
-		else if (operation.equals("oneIncome")) {
-			int mid = Integer.parseInt(request.getParameter("id"));
-			JSONObject result = new JSONObject();
-			try {
-				HomeClass home = new HomeClass();
-				result = home.oneIncome(mid);
-
-			} catch (Exception e) {
 				e.printStackTrace();
 
 			}
@@ -201,31 +141,6 @@ public class HomeServlet extends HttpServlet {
 
 			}
 			response.getWriter().println(result);
-		} else if (operation.equals("deleteExpense")) {
-			int exid = Integer.parseInt(request.getParameter("exid"));
-			JSONObject result = new JSONObject();
-			try {
-				HomeClass home = new HomeClass();
-				home.deleteExpense(exid);
-				result.put("status", 1);
-
-			} catch (Exception e) {
-				result.put("status", 0);
-
-			}
-			response.getWriter().print(result);
-		} else if (operation.equals("expenseOne")) {
-			int exid = Integer.parseInt(request.getParameter("exid"));
-			JSONObject result = new JSONObject();
-			try {
-				HomeClass home = new HomeClass();
-				result = home.expenseOne(exid);
-
-			} catch (Exception e) {
-				result.put("status", 0);
-
-			}
-			response.getWriter().print(result);
 		} else if (operation.equals("allExpense")) {
 			JSONArray result = new JSONArray();
 			try {
@@ -253,7 +168,7 @@ public class HomeServlet extends HttpServlet {
 			JSONObject result = new JSONObject();
 			try {
 				HomeClass home = new HomeClass();
-				result=home.dateReport(fromdate, todate);
+				result = home.dateReport(fromdate, todate);
 
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -57,23 +57,6 @@ $(document).ready(function(){
 		})
 	
 	});
-	
-	$(document).on("keyup","#mid",function(){
-		var mid=$("#mid").val();
-		if(mid !=""){
-			var url="/homeproject/Home?operation=getOne&id="+mid;
-			$.ajax({
-				url:url,
-				type:'POST'
-			}).done(function(result){
-				result=JSON.parse(result);
-				$("#mname").val(result.name);
-				$("#dob").val(result.dob);
-				$("#mno").val(result.mobilenumber);
-			})
-		}
-	});
-	
 	$(document).on("click","#getAll",function(){
 		var url = "/homeproject/Home?operation=getAll";
 		$.ajax({
@@ -85,8 +68,7 @@ $(document).ready(function(){
 			var table = "<table border=2px>";
 			table += "<tr><th>SNo</th><th>Name</th><th>DateOfBirth</th><th>MObileNumber</th></tr>";
 			for (i = 0; i < array.length; i++) {
-            var i = 1;
-			table += "<tr>";
+            table += "<tr>";
 			table += "<td>"+ i + "</td>";
 			table += "<td>"+ array[i].name+ "</td>";
 			table += "<td>"+ array[i].dob+ "</td>";
@@ -166,22 +148,6 @@ $(document).ready(function(){
 		}).fail(function(result){
 			alert("Error Accours");
 		})
-	});
-	
-	$(document).on("keyup","#id",function(){
-		var id=$("#id").val();
-		if(id !=""){
-			var url="/homeproject/Home?operation=oneIncome&id="+id;
-			$.ajax({
-				url:url,
-				type:'POST'
-			}).done(function(result){
-				result=JSON.parse(result);
-				$("#date").val(result.date);
-				$("#desc").val(result.description);
-				$("#amount").val(result.amount);
-			})
-		}
 	});
 	
 	$(document).on("click","#allIncome",function(){
@@ -286,24 +252,6 @@ $(document).ready(function(){
 			alert("Error accurs");
 		})
 	    
-	});
-	
-	$(document).on("keyup","#exid",function(){
-		var exid=$("#exid").val();
-		if(exid !=""){
-			var url="/homeproject/Home?operation=expenseOne&exid="+exid;
-			$.ajax({
-				url:url,
-				type:'POST'
-			}).done(function(result){
-				result=JSON.parse(result);
-				$("#date").val(result.date);
-				$("#mid").val(result.memberid);
-				$("#catename").val(result.categoryname);
-				$("#desc").val(result.description);
-				$("#amount").val(result.amount);
-			})
-		}
 	});
 	
 	$(document).on("click","#allExpense",function(){
