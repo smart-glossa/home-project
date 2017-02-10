@@ -38,22 +38,6 @@ public class HomeServlet extends HttpServlet {
 			}
 			response.getWriter().print(result);
 
-		} else if (operation.equals("updateMember")) {
-			int mid = Integer.parseInt(request.getParameter("mid"));
-			String mname = request.getParameter("mname");
-			String dob = request.getParameter("dob");
-			String mno = request.getParameter("mno");
-			JSONObject result = new JSONObject();
-			try {
-				HomeClass home = new HomeClass();
-				home.updateMember(mid, mname, dob, mno);
-				result.put("status", 1);
-			} catch (Exception e) {
-				result.put("status", 0);
-				e.printStackTrace();
-
-			}
-			response.getWriter().print(result);
 		} else if (operation.equals("getAll")) {
 			JSONArray result = new JSONArray();
 			try {
@@ -121,24 +105,6 @@ public class HomeServlet extends HttpServlet {
 			} catch (Exception e) {
 				result.put("status", 0);
 				e.printStackTrace();
-			}
-			response.getWriter().println(result);
-		} else if (operation.equals("updateExpense")) {
-			int exid = Integer.parseInt(request.getParameter("exid"));
-			String date = request.getParameter("date");
-			int mid = Integer.parseInt(request.getParameter("mid"));
-			String catename = request.getParameter("catename");
-			String desc = request.getParameter("desc");
-			float amount = Float.parseFloat(request.getParameter("amount"));
-			JSONObject result = new JSONObject();
-			try {
-				HomeClass home = new HomeClass();
-				home.updateExpense(exid, date, mid, catename, amount, desc);
-				result.put("status", 1);
-			} catch (Exception e) {
-				result.put("status", 0);
-				e.printStackTrace();
-
 			}
 			response.getWriter().println(result);
 		} else if (operation.equals("allExpense")) {

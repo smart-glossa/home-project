@@ -16,7 +16,7 @@ mem += "    	<td>Mobile Number<\/td><td><input type=\"text\" id=\"mno\"><\/input
 mem += "    <\/tr>";
 mem += "    <tr>";
 mem += "    	<td><\/td>";
-mem += "    	<td><button id=\"addSub\">Submit<\/button><button id=\"update\">Update<\/button><\/td>";
+mem += "    	<td><button id=\"addSub\">Submit<\/button><\/td>";
 mem += "    <\/tr>";
 mem += "<\/table>";    
 mem += "<\/div>";
@@ -70,7 +70,7 @@ function expense(){
 	exp += "    <\/tr>";
 	exp += "    <tr>";
 	exp += "    	<td><\/td>";
-	exp += "    	<td><button id=\"sub\">Submit<\/button><button id=\"upda\">Update<\/button><\/td>";
+	exp += "    	<td><button id=\"sub\">Submit<\/button><\/td>";
 	exp += "    <\/tr>";
 	exp += "<\/table>";    
 	exp += "<\/div>";
@@ -80,23 +80,35 @@ function expense(){
 
 function report(){
 	var rep="";
+	rep +="<div>";
 	rep +="<table>";
 	rep +="<tr>";
 	rep +="<td>Monthly report<\/td>";
 	rep +="<\/tr>";
 	rep +="<tr>";
-	rep += "<td><input type=\"text\" id=\"amount\" readonly=\"true\"><\/input><\/td>";
+	rep += "<td><input type=\"text\" id=\"income\" readonly=\"true\"><\/input><\/td>";
 	rep += "<td><input type=\"text\" id=\"expense\" readonly=\"true\"><\/input><\/td>";
 	rep += "<td><input type=\"text\" id=\"report\" readonly=\"true\"><\/input><\/td>";
 	rep +="<\/tr>";
-	rep +="<tr>";
-	rep +="<td>Date wise report<\/td>";
-	rep +="<\/tr>";
-	rep +="<tr>";
-	rep +="<td><input type=\"date\" id=\"fromdate\"><\/input><\/td>";
-	rep +="<td><input type=\"date\" id=\"todate\"><\/input><\/td>";
-	rep +="<td><button id=\"amount\">cal<\/button><\/td>";
-	rep +="<\/tr>";
-    rep += "";
-$(".member")[0].innerHTML=rep;
+	rep +="<\/table>";
+	rep +="<\/div>";
+	rep +="";
+	$(".member")[0].innerHTML=rep;
+}
+function dateReport(){
+	var repo="";
+	repo +="<div>";
+	repo +="<table>";
+	repo +="<tr>";
+	repo +="<td>Date wise report<\/td>";
+	repo +="<\/tr>";
+	repo +="<tr>";
+	repo +="<td><input type=\"date\" id=\"fromdate\"><\/input><\/td>";
+	repo +="<td><input type=\"date\" id=\"todate\"><\/input><\/td>";
+	repo +="<td><button id=\"cal\">cal<\/button><\/td>";
+	repo +="<\/tr>";
+	repo +="<\/table>";
+	repo +="<\/div>";
+    repo += "";
+    $(".member")[0].innerHTML=repo;
 }

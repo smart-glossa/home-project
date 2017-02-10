@@ -29,18 +29,6 @@ public final class HomeClass {
 		}
 	}
 
-	public void updateMember(int mid, String mname, String dob, String mno) throws SQLException {
-		try {
-			String query = "update member set name='" + mname + "',dob='" + dob + "',mobilenumber='" + mno
-					+ "'where memberid=" + mid;
-			stat.execute(query);
-
-		} finally {
-			closeConnection();
-
-		}
-	}
-
 	public JSONArray getAll() throws SQLException {
 		JSONArray result = new JSONArray();
 		try {
@@ -122,20 +110,6 @@ public final class HomeClass {
 			String query = "insert into expense(date,memberid,categoryname,description,amount)values('" + date + "',"
 					+ mid + ",'" + catename + "','" + desc + "','" + amount + "')";
 			stat.execute(query);
-		} finally {
-			closeConnection();
-
-		}
-
-	}
-
-	public void updateExpense(int exid, String date, int mid, String catename, float amount, String desc)
-			throws SQLException {
-		try {
-			String query = "update expense set date='" + date + "',memberid='" + mid + "',categoryname='" + catename
-					+ "',description='" + desc + "',amount='" + amount + "' where exid=" + exid;
-			stat.execute(query);
-
 		} finally {
 			closeConnection();
 

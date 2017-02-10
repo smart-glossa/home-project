@@ -25,38 +25,6 @@ $(document).ready(function(){
 			alert("Please Check Deatils");
 		})
 	});
-	$(document).on("click","#update",function(){
-		var mid=$("#mid").val();
-		var mname=$("#mname").val();
-		var dob=$("#dob").val();
-		var mno=$("#mno").val();
-		if(mid==""){
-			$("#mid").focus().css("outline-color","red");
-			return;
-		}
-		if(mname==""){
-			$("#mname").focus().css("outline-color","red");
-			return;
-		}
-		if(dob==""){
-			$("#dob").focus().css("outline-color","red");
-			return;
-		}
-		if(mno==""){
-			$("#mno").focus().css("outline-color","red");
-			return;
-		}
-		var url="/homeproject/Home?operation=updateMember&mid="+mid+"&mname="+mname+"&dob="+dob+"&mno="+mno;
-		$.ajax({
-			url:url,
-			type:'POST'
-		}).done(function(result){
-			alert("Update Successfully");
-		}).fail(function(result){
-			alert("Error accurs");
-		})
-	
-	});
 	$(document).on("click","#getAll",function(){
 		var url = "/homeproject/Home?operation=getAll";
 		$.ajax({
@@ -65,17 +33,19 @@ $(document).ready(function(){
 		})
 		.done(function(result) {
 			var array = JSON.parse(result);
-			var table = "<table border=2px>";
+			var table = "<table class='memTab'>";
 			table += "<tr><th>SNo</th><th>Name</th><th>DateOfBirth</th><th>MObileNumber</th></tr>";
 			for (i = 0; i < array.length; i++) {
-            table += "<tr>";
-			table += "<td>"+ i + "</td>";
-			table += "<td>"+ array[i].name+ "</td>";
-			table += "<td>"+ array[i].dob+ "</td>";
-			table += "<td>"+ array[i].mobilenumber+ "</td>";
+				var a=1;
+				
+            table += "<tr class='row'>";
+			table += "<td class='data'>"+ a + "</td>";
+			table += "<td class='data'>"+ array[i].name+ "</td>";
+			table += "<td class='data'>"+ array[i].dob+ "</td>";
+			table += "<td class='data'>"+ array[i].mobilenumber+ "</td>";
 			
 			table += "</tr>";
-			
+			a++;
           }
 			table += "</table>";
 			$('.member')[0].innerHTML = table;
@@ -158,17 +128,17 @@ $(document).ready(function(){
 		})
 		.done(function(result) {
 			var array = JSON.parse(result);
-			var table = "<table border=2px>";
+			var table = "<table class='memTab'>";
 			table += "<tr><th>SNo<th>Name</th><th>Date</th><th>Description</th><th>Amount</th></tr>";
 			for (i = 0; i < array.length; i++) {
 				var a=0;
 				a++;
-			table += "<tr>";
-			table += "<td>"+ a + "</td>";
-			table += "<td>"+ array[i].name+ "</td>";
-			table += "<td>"+ array[i].date+ "</td>";
-			table += "<td>"+ array[i].description+ "</td>";
-			table += "<td>"+ array[i].amount+ "</td>";
+			table += "<tr class='row'>";
+			table += "<td class='data'>"+ a + "</td>";
+			table += "<td class='data'>"+ array[i].name+ "</td>";
+			table += "<td class='data'>"+ array[i].date+ "</td>";
+			table += "<td class='data'>"+ array[i].description+ "</td>";
+			table += "<td class='data'>"+ array[i].amount+ "</td>";
 			table += "</tr>";
           }
 			table += "</table>";
@@ -211,49 +181,6 @@ $(document).ready(function(){
 			alert("Please Check Deatils");
 		})
 	});
-	
-	$(document).on("click","#upda",function(){
-		var exid=$("#exid").val();
-		var date=$("#date").val();
-		var mid=$("#mid").val();
-		var catename=$("#catename").val();
-		var desc=$("#desc").val();
-		var amount=$("#amount").val();
-		if(exid==""){
-			$("#exid").focus().css("outline-color","red");
-			return;
-		}
-		if(date==""){
-			$("#date").focus().css("outline-color","red");
-		}
-		if(mid==""){
-			$("#mid").focus().css("outline-color","red");
-			return;
-		}
-		if(catename==""){
-			$("#catename").focus().css("outline-color","red");
-			return;
-		}
-		if(desc==""){
-			$("#desc").focus().css("outline-color","red");
-			return;
-		}
-		if(amount==""){
-			$("#amount").focus().css("outline-color","red");
-			return;
-		}
-		var url="/homeproject/Home?operation=updateExpense&exid="+exid+"&date="+date+"&mid="+mid+"&catename="+catename+"&desc="+desc+"&amount="+amount;
-		$.ajax({
-			url:url,
-			type:'POST'
-		}).done(function(result){
-			alert("Update Successfully");
-		}).fail(function(result){
-			alert("Error accurs");
-		})
-	    
-	});
-	
 	$(document).on("click","#allExpense",function(){
 		var url = "/homeproject/Home?operation=allExpense";
 		$.ajax({
@@ -262,18 +189,18 @@ $(document).ready(function(){
 		})
 		.done(function(result) {
 			var array = JSON.parse(result);
-			var table = "<table border=2px>";
+			var table = "<table class='memTab'>";
 			table += "<tr><th>Sno</th><th>Date</th><th>Name</th><th>CategoryName</th><th>Description</th><th>Amount</th></tr>";
 			for (i = 0; i < array.length; i++) {
 				var a=0;
 				a++;
-		    table += "<tr>";
-		    table += "<td>"+a+ "</td>";
-			table += "<td>"+ array[i].date+ "</td>";
-			table += "<td>"+ array[i].name+ "</td>";
-			table += "<td>"+ array[i].categoryname+ "</td>";
-			table += "<td>"+ array[i].description+ "</td>";
-			table += "<td>"+ array[i].amount+ "</td>";
+		    table += "<tr class='row'>";
+		    table += "<td class='data'>"+a+ "</td>";
+			table += "<td class='data'>"+ array[i].date+ "</td>";
+			table += "<td class='data'>"+ array[i].name+ "</td>";
+			table += "<td class='data'>"+ array[i].categoryname+ "</td>";
+			table += "<td class='data'>"+ array[i].description+ "</td>";
+			table += "<td class='data'>"+ array[i].amount+ "</td>";
 			table += "</tr>";
           }
 			table += "</table>";
@@ -291,13 +218,13 @@ $(document).ready(function(){
 			var income=array.amount;
 			var expense=array.expense;
 		    var balance=income-expense;
-		    $("#amount").val(income);
+		    $("#income").val(income);
 		    $("#expense").val(expense);
 		    $("#report").val(balance);
 			
 		})
 	})
-	$(document).on("click","#amount",function(){
+	$(document).on("click","#cal",function(){
 		var fromdate=$("#fromdate").val();
 		var todate=$("#todate").val();
 		var url="/homeproject/Home?operation=dateReport&fromdate="+fromdate+"&todate="+todate;
@@ -306,16 +233,16 @@ $(document).ready(function(){
 			type:'POST'
 		}).done(function(result){
 			var array=JSON.parse(result);
-			var table="<table border=2px>"
+			var table="<table class='memTab'>"
 				table +="<tr><th>Income</th><th>Expense</th><th>Balance</th>"
 			
 				var amount=array.amount;
 				var date=array.date;
 				var bal=amount-date;	
-			table +="<tr>";
-			table +="<td>" + amount+ "</td>";
-			table +="<td>" + date + "</td>";
-			table +="<td>" + bal + "</td>";
+			table +="<tr class='row'>";
+			table +="<td class='data'>" + amount+ "</td>";
+			table +="<td class='data'>" + date + "</td>";
+			table +="<td class='data'>" + bal + "</td>";
 			table +="</tr>";
 			
 			table +="</table>";
