@@ -8,7 +8,8 @@
       <title>Home</title>
         <script src="js/external/jquery.js"></script>
         <script src="js/member.js"></script>
-        <script src="js/salary.js"></script>  
+        <script src="js/salary.js"></script> 
+        <script src="js/valid.js"></script> 
         
     </head>
     <body>
@@ -19,8 +20,8 @@
 <div>
   <p class="dropbtn"><span>Member</span></p></div>
   <div class="dropdown-content">
-    <p onclick="member()">Add Member</p>
-    <p id="getAll">Member Details </p>
+    <p onclick="member()" class="salary">Add Member</p>
+    <p id="getAll" class="income">Member Details </p>
    
   </div>
 </div><br><br><br>
@@ -28,24 +29,24 @@
 <div>
   <p class="dropbtn"><span>Income</span></p></div>
   <div class="dropdown-content">
-    <p onclick="income()">Add Income</p>
-    <p id="allIncome">Income Details</p>
+    <p onclick="income()" class="salary">Add Income</p>
+    <p id="allIncome" class="income">Income Details</p>
     </div>
    </div><br><br><br>
    <div class="dropdown" >
    <div>
   <p class="dropbtn"><span>Expense</span></p></div>
   <div class="dropdown-content">
-    <p onclick="expense()">Add Expense</p>
-    <p id="allExpense">Expense Details</p>
+    <p onclick="expense()" class="salary">Add Expense</p>
+    <p id="allExpense" class="income">Expense Details</p>
    </div>
 </div><br><br><br>
 <div class="dropdown">
 <div>
 <p class="dropbtn">Report</p></div>
 <div class="dropdown-content">
-    <p id="rep" onclick="report()">Over All</p>
-    <p onclick="dateReport()" >Date wise</p>
+    <p id="rep" onclick="report()" class="repor">Over All</p>
+    <p onclick="dateReport()">Date wise</p>
    </div>
 
 </div>

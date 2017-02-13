@@ -88,7 +88,7 @@ public class HomeServlet extends HttpServlet {
 				result = home.allIncome();
 
 			} catch (Exception e) {
-
+				e.printStackTrace();
 			}
 			response.getWriter().println(result);
 		} else if (operation.equals("addExpense")) {
@@ -114,7 +114,7 @@ public class HomeServlet extends HttpServlet {
 				result = home.allExpense();
 
 			} catch (Exception e) {
-
+				e.printStackTrace();
 			}
 			response.getWriter().println(result);
 

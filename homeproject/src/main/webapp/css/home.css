@@ -10,16 +10,20 @@
 	
 }
 .memb{
-	width:200px;
-	height:200px;
+	width:500px;
+	height:300px;
 	float: left;
 	margin-left: 300px;
 	margin-top: 50px;
+	border-radius:15px;
 	
 }
 .member{
 	width:300px;
 	height: 200px;
+	margin-top: 50px;
+	margin-left: 40px;
+	
 }
 #head
 {
@@ -81,6 +85,7 @@
     background-color: gray;
     width:200px;
     height:30px;
+
 }
 .memTab {
     border-collapse: collapse;
@@ -100,4 +105,7 @@ th {
 }
 input[type=date]{
 	width:160px;
+}
+.month{
+	font-size:20px;
 }

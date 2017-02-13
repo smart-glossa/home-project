@@ -15,6 +15,14 @@ $(document).ready(function(){
 			$("#mno").focus().css("outline-color","red");
 			return;
 		}
+		 if (mno.length != 10) {
+	            $('#mno').focus().css('outline-color', 'red');
+	            return;
+	        }
+	        if (mno.charAt(0) != "7" && mno.charAt(0) != "8" && mno.charAt(0) != "9") {
+	            $('#mno').focus().css('outline-color', 'red');
+	            return;
+	        }
 		var url="/homeproject/Home?operation=addMember&mname="+mname+"&dob="+dob+"&mno="+mno;
 		$.ajax({
 			url:url,
@@ -34,7 +42,7 @@ $(document).ready(function(){
 		.done(function(result) {
 			var array = JSON.parse(result);
 			var table = "<table class='memTab'>";
-			table += "<tr><th>SNo</th><th>Name</th><th>DateOfBirth</th><th>MObileNumber</th></tr>";
+			table += "<tr><th>SNo</th><th>Name</th><th>DateOfBirth</th><th>MobileNumber</th></tr>";
 			for (i = 0; i < array.length; i++) {
 				var a=1;
 				

@@ -83,7 +83,7 @@ function report(){
 	rep +="<div>";
 	rep +="<table>";
 	rep +="<tr>";
-	rep +="<td>Monthly report<\/td>";
+	rep +="<td class='month'>Monthly report<\/td>";
 	rep +="<\/tr>";
 	rep +="<tr>";
 	rep += "<td><input type=\"text\" id=\"income\" readonly=\"true\"><\/input><\/td>";
@@ -100,7 +100,7 @@ function dateReport(){
 	repo +="<div>";
 	repo +="<table>";
 	repo +="<tr>";
-	repo +="<td>Date wise report<\/td>";
+	repo +="<td class='month'>Date wise report<\/td>";
 	repo +="<\/tr>";
 	repo +="<tr>";
 	repo +="<td><input type=\"date\" id=\"fromdate\"><\/input><\/td>";
